@@ -1,0 +1,72 @@
+.buildingInfoBg{
+    background-image: linear-gradient(to bottom right, #f3feff,#ceddf3);
+   
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.buildinInfoContainer{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+.headingInfo{
+    font-family: "Roboto",sans-serif;
+    font-size: 24px;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+.plotInfoContainer{
+   padding-top: 10px;
+}
+.subHeadings{
+    font-family: "Roboto",sans-serif;
+    font-weight: bold;
+    color:#000000;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.label{
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+.inputEl{
+    margin-bottom: 10px;
+}
+.constructionDetailsInfoContainer{
+   padding-bottom: 10px;
+}
+.constructionStagesContainer{
+    padding-bottom: 10px;
+}
+.stagesCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.buildingDetailsContainer{
+    padding-bottom: 10px;
+}
+
+.nextButtonCont{
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 900px) {
+.buildingInfoBg{
+    padding: 100px;
+}
+}
+.buttonAdd{
+    background-color: hsl(211, 48%, 44%);
+    color:#ffffff;
+    border-radius: 8px;
+    border-width: 0px;
+    width: 70px;
+}

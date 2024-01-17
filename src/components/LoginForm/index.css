@@ -1,18 +1,17 @@
-
 .loginPagesContainer {
-    min-height: 100vh;
+    height: 100vh;
      display: flex;
      flex-direction: column;
      justify-content: center;
-     background-image: linear-gradient(to bottom right, #ebf4f5, #b5c6e0);
      padding: 10px;
+     background-image: linear-gradient(to bottom right, #f3feff,#ceddf3);
 }
-  
   .loginContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    justify-content: center;
     margin-bottom: 20px; 
   }
   
@@ -66,62 +65,28 @@
   
   .inputField {
     
-    width: 200px;
+    width: 330px;
     padding: 8px;
     margin-bottom: 18px;
   }
-  .dynamicParagraph {
-    color: #4CAF50; /* Use your preferred color */
-    cursor: pointer;
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-  }
+  
   .mobileContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .transparentButton {
-    background-color: transparent;
-    border: 2px solid #fff; 
-    color: #fff; 
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width:300px;
-    color: black;
-   
-}
-.desc-ele{
-  font-family: "Roboto",sans-serif;
-  font-weight: bold;
-  color: #000000;
-  font-size: 20px;
-  margin-top: 0px;
-}
-.transparentButtonCont{
-  text-align: center;
-  margin-top: 20px;
-}
-
-.transparentButton:hover {
-    background-color: rgba(255, 255, 255, 0.3); 
-    color:#0059b3;
-    border: 2px solid #0059b3; 
-}
-
   @media only screen and (min-width: 800px) {
     
     .loginContainer {
         padding: 10px;
+
       }
     .loginPagesContainer{
     
         margin: 20px;
         margin-top: 0px;
+        flex-direction: row;
         
     }
     .inputField{

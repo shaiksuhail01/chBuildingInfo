@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
-import './index.css'; // Make sure to create a corresponding CSS file
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import './index.css'; 
+
+
+
 
 const LoginForm = () => {
-  const [loginMethod, setLoginMethod] = useState('omanID');
 
-  const handleLoginMethodChange = (method) => {
-    setLoginMethod(method);
+
+  const navigate = useNavigate();
+  const [mobileNumber, setMobileNumber] = useState('');
+
+  const onClickLoginButton = () => {
+    if (mobileNumber.trim() === '') {
+      alert('Mobile number is required!');
+    } else {
+     
+      navigate('/building-info');
+    }
   };
 
   return (
     <div className='loginPagesContainer'>
-      {loginMethod === 'omanID' && (
+    
         <div className='loginContainer'>
           <h1 className='headingOne'>Omani ID / Resident ID</h1>
           <img src="/images/Login.jpg" alt="loginImage" className='imageLogin' />
@@ -18,39 +30,29 @@ const LoginForm = () => {
           <button className='button'>
             Login 
           </button>
-          <div className='transparentButtonCont'>
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-          </div>
-          <button className='dynamicParagraph transparentButton'onClick={() => handleLoginMethodChange('mobileNumber')}>Login with Registered Mobile No</button>
         </div>
-        </div>
-      )}
-
-      {loginMethod === 'mobileNumber' && (
+        <hr style={{ borderColor: "black" }} />
+          
         <div className='loginContainer'>
           <h1 className='headingOne'>Mobile ID</h1>
           <img src="/images/mobile pass.avif" alt="loginImage" className='imageLogin' />
           <div className='mobileContainer'>
             <label htmlFor="mobileNumber" className='labelText'>Mobile Number:</label>
             <br/>
-            <input type="tel" id="mobileNumber" name="mobileNumber" className='inputField'/>
-            <button className='button' >
+            <input
+          type='tel'
+          id='mobileNumber'
+          name='mobileNumber'
+          className='inputField'
+          value={mobileNumber}
+          onChange={(e) => setMobileNumber(e.target.value)}
+        />
+            <button className='button' onClick={onClickLoginButton}>
               Login
             </button>
-           
-            <div className='transparentButtonCont'>
-            <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-          </div>
-            <button className='dynamicParagraph transparentButton' onClick={() => handleLoginMethodChange('omanID')}>
-              Login with Registered Omani ID
-            </button>
-            
-            </div>
           </div>
         </div>
-      )}
+   
     </div>
   );
 };
