@@ -52,7 +52,6 @@ const consultantList=[
 
 ]
 
-
 const ChBuildingInfo = () => {
   const [plotNumber,setPlotNumber]=useState('')
   const [krookieNumber, setKrookieNumber] = useState('');
@@ -196,7 +195,7 @@ const ChBuildingInfo = () => {
   const handleDeleteBuilding = (index) => {
     setBuildingData((prevData) => {
       const newData = [...prevData];
-      newData.splice(index, 1);
+      newData.splice(index, 1);  
       return newData;
     });
   };
@@ -270,7 +269,7 @@ const ChBuildingInfo = () => {
                             <option value="EmailMarketing">Email Marketing</option>
                             <option value="Newspaper">Newspaper</option>
                             <option value="EventSponsorship">Event Sponsorship</option>
-                        </select>
+        </select>
         </div>
         <div className='constructionStagesContainer'>
         <div className='stagesCont'>
@@ -296,7 +295,7 @@ const ChBuildingInfo = () => {
               className="ml-2 mb-2 btn"
               onClick={() => handleDeleteStage(stage)}
             >
-              <i className="fas fa-trash"></i> 
+            <i class="fas fa-minus-circle red-icon"></i>
             </button>
               </div>
             ))}
@@ -343,7 +342,7 @@ const ChBuildingInfo = () => {
           className="btn"
           onClick={() => handleDeleteBuilding(index)}
         >
-          <i className="fas fa-trash"></i>
+          <i class="fas fa-minus-circle red-icon"></i>
         </button>
               </td>
             </tr>
