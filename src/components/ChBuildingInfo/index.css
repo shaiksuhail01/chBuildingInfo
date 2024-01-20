@@ -13,7 +13,7 @@
 }
 .headingInfo{
     font-family: "Roboto",sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     color: #000000;
     font-weight: bold;
     text-align: center;
@@ -30,7 +30,7 @@
 }
 .label{
     color: #000000;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     padding-bottom: 5px;
 }

@@ -29,7 +29,8 @@ const LoginForm = () => {
         </button>
       </div>
       
-      <hr style={{ borderColor: "black" }} />
+      <hr/>
+      <div className='devider'></div>
 
       <div className='loginContainer'>
         <h1 className='headingOne'>Mobile ID</h1>

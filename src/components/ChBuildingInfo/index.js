@@ -205,62 +205,75 @@ const ChBuildingInfo = () => {
   return (
     <div className="buildingInfoBg">
       <div className="buildinInfoContainer">
-        <h1 className="headingInfo">Customer House Building Information</h1>
-        <div className="plotInfoContainer">
-          <h1 className="subHeadings">Plot Information</h1>
-          <hr style={{ borderColor: "black" }} />
-          
-          <label htmlFor="plotNum" className="label">Plot Number</label>
-          <input
-            type="text"
-            className="form-control inputEl"
-            id="plotNum"
-            value={plotNumber}
-            onChange={handlePlotNumberChange}
-          />
+        <h1 className="headingInfo p-4">Customer House Building Information</h1>
+      
+        <div className="card bg-light mb-3">
+  <div className="card-header p-3">
+    <h1 className="subHeadings">Plot Information</h1>
+  </div>
+  <div className="card-body">
+    <label htmlFor="plotNum" className="label">
+      Plot Number
+    </label>
+    <input
+      type="text"
+      className="form-control inputEl"
+      id="plotNum"
+      value={plotNumber}
+      onChange={handlePlotNumberChange}
+    />
 
+    <label htmlFor="krookie" className="label">
+      KROOKIE Number
+    </label>
+    <input
+      type="text"
+      className="form-control inputEl"
+      id="krookie"
+      value={krookieNumber}
+      onChange={handleKrookieChange}
+    />
 
-          <label htmlFor="krookie" className="label">KROOKIE Number</label>
-          <input
-            type="text"
-            className="form-control inputEl"
-            id="krookie"
-            value={krookieNumber}
-            onChange={handleKrookieChange}
-          />
+    <label htmlFor="plotAdd" className="label">
+      Plot Address
+    </label>
+    <input
+      type="text"
+      className="form-control inputEl"
+      id="plotAdd"
+      value={plotAddress}
+      onChange={handlePlotAddressChange}
+    />
 
-          <label htmlFor="plotAdd" className="label">Plot Address</label>
-          <input
-            type="text"
-            className="form-control inputEl"
-            id="plotAdd"
-            value={plotAddress}
-            onChange={handlePlotAddressChange}
-          />
+    <label htmlFor="consultant" className="label">
+      Consultant Code
+    </label>
+    <input
+      type="text"
+      className="form-control inputEl"
+      id="consultant"
+      value={consultantCode}
+      onChange={handleConsultantCodeChange}
+    />
 
-          <label htmlFor="consultant" className="label">Consultant Code</label>
-          <input
-            type="text"
-            className="form-control inputEl"
-            id="consultant"
-            value={consultantCode}
-            onChange={handleConsultantCodeChange}
-          />
+    <label htmlFor="consultantName" className="label">
+      Consultant Name
+    </label>
+    <input
+      type="text"
+      className="form-control inputEl"
+      id="consultantName"
+      value={consultantName}
+      onChange={handleConsultantNameChange}
+    />
+  </div>
+</div>
 
-          <label htmlFor="consultantName" className="label">Consultant Name</label>
-          <input
-            type="text"
-            className="form-control inputEl"
-            id="consultantName"
-            value={consultantName}
-            onChange={handleConsultantNameChange}
-          />
-        </div>
-
-        <div className='constructionDetailsInfoContainer'>
+    <div className="card bg-light mb-3">
+        <div className="card-header p-3">
         <h1 className="subHeadings">Construction Details</h1>
-        <hr style={{ borderColor: "black" }} />
-          
+        </div>
+        <div className="card-body">
         <label htmlFor="advertisement" className="label">Advertisement Type</label>
         <select className="form-control mb-2" id="advertisement" value={advertisementType}
             onChange={handleAdvertisementTypeChange}>
@@ -271,16 +284,24 @@ const ChBuildingInfo = () => {
                             <option value="EventSponsorship">Event Sponsorship</option>
         </select>
         </div>
+        </div>
+
+        <div className="card bg-light mb-3">
+        
         <div className='constructionStagesContainer'>
-        <div className='stagesCont'>
-        <h1 className="subHeadings">Construction Stages</h1>
+        
+        <div className="card-header d-flex justify-content-between align-items-center p-3">
+    <h1 className="subHeadings mb-0">Construction Stages</h1>
+    
+    <button type="button" className="p-2 buttonAdd" onClick={handleAddStage}>
+        Add
+    </button>
+</div>
 
+         
+        <div className="card-body">
 
-        <button type="button" className="pl-2 buttonAdd" onClick={handleAddStage}>
-              Add
-            </button>
-         </div>
-         <hr style={{ borderColor: "black" }} />
+        
           
          {constructionStages.map((stage) => (
           <div key={stage} className="mb-2 d-flex align-items-center">
@@ -299,15 +320,27 @@ const ChBuildingInfo = () => {
             </button>
               </div>
             ))}
+  </div>
+    
         </div>
+     </div>
+
+
+
+
+
+
+     <div className="card bg-light mb-3">
+
         <div className='buildingDetailsContainer'>
-        <div className='stagesCont'>
-        <h1 className="subHeadings">Buildings Details</h1>
-        <button type="button" className="pl-2 buttonAdd" onClick={handleAddBuildingStage}>
+        <div className="card-header d-flex justify-content-between align-items-center p-3">
+    <h1 className="subHeadings mb-0">Buildings Details </h1>
+        <button type="button" className="p-2 buttonAdd" onClick={handleAddBuildingStage}>
               Add
             </button>
          </div>
-         <hr style={{ borderColor: "black" }} />
+        
+         <div className="card-body">
          <div className="table-responsive">
         <table className="table table-bordered">
     <thead className="thead-light"> 
@@ -351,6 +384,8 @@ const ChBuildingInfo = () => {
   </table>
         </div>
       </div>
+      </div>
+      </div>
       <div className='nextButtonCont'>       
         <button  className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
               Next
@@ -385,10 +420,10 @@ const ChBuildingInfo = () => {
 
       </div>
     </div>
+</div>
 
 
-
-      </div>
+   
 )};
 
 export default ChBuildingInfo;
