@@ -19,30 +19,30 @@ const LoginForm = () => {
   };
 
   return (
+    <div className='mainContainer'>
     <div className='loginPagesContainer'>
       <div className='loginContainer'>
         <h1 className='headingOne'>Omani ID / Resident ID</h1>
         <img src="/images/Login.jpg" alt="loginImage" className='imageLogin' />
         <p className='desc'>To use this login method, you need a civil ID card and ID card reader.</p>
-        <button className='button'>
+        <button className='button mt-2'>
           Login 
         </button>
       </div>
       
-      <hr/>
-      <div className='devider'></div>
+   
 
       <div className='loginContainer'>
         <h1 className='headingOne'>Mobile ID</h1>
         <img src="/images/mobile pass.avif" alt="loginImage" className='imageLogin' />
         <div className='mobileContainer'>
-          <label htmlFor="mobileNumber" className='labelText'>Mobile Number:</label>
-          <br/>
+        
           <input
         type='tel'
         id='mobileNumber'
         name='mobileNumber'
-        className='form-control mb-3 pb-3'
+        placeholder='Enter Your Mobile Number'
+        className='form-control mb-3 mt-3 pb-3'
         value={mobileNumber}
         required
         onChange={(e) => {
@@ -56,6 +56,7 @@ const LoginForm = () => {
       </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DraggableDialog from '../DailogueBox';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -173,15 +174,7 @@ const ChBuildingInfo = () => {
     }
   };
   
-  const handleModalConfirmation = (confirmed) => {
-    if (confirmed) {
-      window.location.reload();
-    } else {
-    }
 
-
-    setShowModal(false);
-  };
 
   const handleDeleteStage = (stage) => {
     setConstructionStages((prevStages) => prevStages.filter((s) => s !== stage));
@@ -392,37 +385,11 @@ const ChBuildingInfo = () => {
             </button>
       </div>
    
+        <DraggableDialog open={showModal} onClose={() => setShowModal(false)} />
+        
 
-      <div className={`modal ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Confirmation</h5>
-              <button type="button" className="close" onClick={() => handleModalConfirmation(false)}>
-                <span>&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              Are you sure you want to save the info?
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={() => handleModalConfirmation(false)}>
-                No
-              </button>
-              <button type="button" className="btn btn-primary" onClick={() => handleModalConfirmation(true)}>
-                Yes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={`modal-backdrop fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }}>
-
-      </div>
-    </div>
 </div>
-
-
+</div>
    
 )};
 
