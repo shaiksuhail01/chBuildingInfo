@@ -34,7 +34,7 @@ const LoginForm = () => {
 
       <div className='loginContainer'>
         <h1 className='headingOne'>Mobile ID</h1>
-        <img src="/images/mobile pass.avif" alt="loginImage" className='imageLogin' />
+        <img src="/images/mobile.jpg" alt="loginImage" className='imageLogin' />
         <div className='mobileContainer'>
         
           <input
