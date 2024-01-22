@@ -33,7 +33,7 @@ const DraggableDialog = ({ open, onClose }) => {
       </DialogTitle>
       <DialogContent>
         <DialogContentText>
-         Are you sure want to confirm the changes...?
+         Are you sure want to save the changes..?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
