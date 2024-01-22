@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './index.css'; 
 
+
 const LoginForm = () => {
   const navigate = useNavigate();
   const [mobileNumber, setMobileNumber] = useState('');
@@ -29,9 +30,7 @@ const LoginForm = () => {
           Login 
         </button>
       </div>
-      
-   
-
+    
       <div className='loginContainer'>
         <h1 className='headingOne'>Mobile ID</h1>
         <img src="/images/mobile.jpg" alt="loginImage" className='imageLogin' />

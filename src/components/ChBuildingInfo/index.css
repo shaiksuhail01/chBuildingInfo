@@ -21,6 +21,16 @@
 .plotInfoContainer{
    padding-top: 10px;
 }
+.no-outline-input {
+    outline: none;
+    border: none;
+  }
+  .error {
+    border: 1px solid red !important;
+  }
+  .error-text {
+    color: red;
+  }
 .subHeadings{
     font-family: "Roboto",sans-serif;
     font-weight: bold;
@@ -59,7 +69,7 @@
 }
 .red-icon {
     color: #ff8080;
-  }
+}
 
 @media only screen and (min-width: 900px) {
 .buildingInfoBg{
