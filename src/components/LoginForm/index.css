@@ -1,20 +1,27 @@
 .mainContainer{
-  background-image: linear-gradient(to bottom right, #f3feff,#ceddf3);
-  padding: 20px;
+  background-image: linear-gradient(to bottom right, #b8d6d8,#a9bedd);
+  padding: 15px;
   display: flex;
   justify-content: center;
-
+  flex-direction: column;
 }
+
 
 .loginPagesContainer {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     padding: 10px;
-     margin: 10px;
+     
+     
+     background-color: #ffffff;
+     border-radius: 20px;
+    padding: 20px;
     
 }
+.loginfullPageContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
   .loginContainer {
     display: flex;
     align-items: center;
@@ -48,9 +55,18 @@
     font-weight: bold;
     margin-top: 35px;
   }
+  .loginHeader{
+    font-size: 36px;
+    font-weight: bold;
+    padding: 30px 0 15px;
+    text-align: center;
+    font-family: 'SFProDisplay', sans-serif; 
+    color: #001f3f;
+    text-align: center;
+  }
   .button {
     padding: 15px;
-    width: 330px; 
+    width: 290px; 
     max-width: 500px;
     font-size: 18px;
     background-color: #001f3f;
@@ -92,11 +108,14 @@
       .mainContainer{
         height: 100vh;
       }
-    .loginPagesContainer{
-      
-        flex-direction: row;
-        
+    .loginfullPageContainer{
+        flex-direction: row;  
     }
+    .loginPagesContainer{
+    margin: 60px;
+    }
+   
+
   
 
     .button{

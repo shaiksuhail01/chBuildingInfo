@@ -1,6 +1,5 @@
 .buildingInfoBg{
-    background-image: linear-gradient(to bottom right, #f3feff,#ceddf3);
-   
+    background-image: linear-gradient(to bottom right, #b8d6d8,#a9bedd);
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -70,10 +69,21 @@
 .red-icon {
     color: #ff8080;
 }
+.plotConstructionContainer{
+    display: flex;
+    flex-direction: column;
+}
+.card{
+    flex: 1;
+    margin: 5px;
+}
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 800px) {
 .buildingInfoBg{
     padding: 100px;
+}
+.plotConstructionContainer{
+    flex-direction: row;
 }
 }
 .buttonAdd{

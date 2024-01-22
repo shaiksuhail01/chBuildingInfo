@@ -21,7 +21,10 @@ const LoginForm = () => {
 
   return (
     <div className='mainContainer'>
+   
     <div className='loginPagesContainer'>
+    <h1 className='loginHeader'>Login</h1>
+    <div className='loginfullPageContainer'>
       <div className='loginContainer'>
         <h1 className='headingOne'>Omani ID / Resident ID</h1>
         <img src="/images/Login.jpg" alt="loginImage" className='imageLogin' />
@@ -41,7 +44,7 @@ const LoginForm = () => {
         id='mobileNumber'
         name='mobileNumber'
         placeholder='Enter Your Mobile Number'
-        className='form-control mb-3 mt-3 pb-3'
+        className='form-control mb-3 mt-3 p-2'
         value={mobileNumber}
         required
         onChange={(e) => {
@@ -55,6 +58,7 @@ const LoginForm = () => {
       </button>
         </div>
       </div>
+    </div>
     </div>
     </div>
   );
