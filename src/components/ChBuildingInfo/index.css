@@ -25,10 +25,10 @@
     border: none;
   }
   .error {
-    border: 1px solid red !important;
+    border: 1px solid #a94442 !important;
   }
   .error-text {
-    color: red;
+    color: #a94442;
   }
 .subHeadings{
     font-family: "Roboto",sans-serif;

@@ -261,7 +261,7 @@ const ChBuildingInfo = () => {
   <div className="card-body">
   <TextField
           id="plotNum"
-          label={errors.plotNumber ? <span className="error-text">*Required</span> : 'Plot Number'}
+          label={errors.plotNumber ? <span className="error-text"> *  Required</span> : 'Plot Number'}
           variant="outlined"
           className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
           value={plotNumber}
