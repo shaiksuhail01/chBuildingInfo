@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DraggableDialog from '../DailogueBox';
+import Header from '../Header';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from '@mui/material/TextField';
 import {  MenuItem, } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -79,7 +80,7 @@ const ChBuildingInfo = () => {
   const [showModal, setShowModal] = useState(false);
   const [confirmationDialog, setConfirmationDialog] = useState(false);
 
-
+  const { t } = useTranslation();
   const [buildingData, setBuildingData] = useState([
     { buildingNumber: '1', totalSize: '', numberOfFloors: '' },
     { buildingNumber: '2', totalSize: '', numberOfFloors: '' },
@@ -251,95 +252,97 @@ const ChBuildingInfo = () => {
   
   return (
     <div className="buildingInfoBg">
+     <Header/>
       <div className="buildinInfoContainer">
-        <h1 className="headingInfo p-4">Customer House Building Information</h1>
+     
+      <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
       <div className='plotConstructionContainer'>
         <div className="card bg-light mb-3">
   <div className="card-header p-3">
-    <h1 className="subHeadings">Plot Information</h1>
+  <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
   </div>
   <div className="card-body">
   <TextField
-          id="plotNum"
-          label={errors.plotNumber ? <span className="error-text"> *  Required</span> : 'Plot Number'}
-          variant="outlined"
-          className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
-          value={plotNumber}
-          onChange={handlePlotNumberChange}
-          onBlur={() => handleBlur('plotNumber', plotNumber)}
-          onClick={() => handleFieldClick('plotNumber')}
-        />
+      id="plotNum"
+      label={errors.plotNumber ? <span className="error-text"> *  {t('Required')}</span> : t('plotNumberLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
+      value={plotNumber}
+      onChange={handlePlotNumberChange}
+      onBlur={() => handleBlur('plotNumber', plotNumber)}
+      onClick={() => handleFieldClick('plotNumber')}
+    />
 
-        <TextField
-          id="krookie"
-          label={errors.krookieNumber ? <span className="error-text">*Required</span> : 'KROOKIE Number'}
-          variant="outlined"
-          className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
-          value={krookieNumber}
-          onChange={handleKrookieChange}
-          onBlur={() => handleBlur('krookieNumber', krookieNumber)}
-          onClick={() => handleFieldClick('krookieNumber')}
-        />
+    <TextField
+      id="krookie"
+      label={errors.krookieNumber ? <span className="error-text">*{t('Required')}</span> : t('krookieNumberLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
+      value={krookieNumber}
+      onChange={handleKrookieChange}
+      onBlur={() => handleBlur('krookieNumber', krookieNumber)}
+      onClick={() => handleFieldClick('krookieNumber')}
+    />
 
-        <TextField
-          id="plotAdd"
-          label={errors.plotAddress ? <span className="error-text">*Required</span> : 'Plot Address'}
-          variant="outlined"
-          className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
-          value={plotAddress}
-          onChange={handlePlotAddressChange}
-          onBlur={() => handleBlur('plotAddress', plotAddress)}
-          onClick={() => handleFieldClick('plotAddress')}
-        />
+    <TextField
+      id="plotAdd"
+      label={errors.plotAddress ? <span className="error-text">*{t('Required')}</span> : t('plotAddressLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
+      value={plotAddress}
+      onChange={handlePlotAddressChange}
+      onBlur={() => handleBlur('plotAddress', plotAddress)}
+      onClick={() => handleFieldClick('plotAddress')}
+    />
 
-        <TextField
-          id="consultant"
-          label={errors.consultantCode ? <span className="error-text">*Required</span> : 'Consultant Code'}
-          variant="outlined"
-          className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
-          value={consultantCode}
-          onChange={handleConsultantCodeChange}
-          onBlur={() => handleBlur('consultantCode', consultantCode)}
-          onClick={() => handleFieldClick('consultantCode')}
-        />
+    <TextField
+      id="consultant"
+      label={errors.consultantCode ? <span className="error-text">*{t('Required')}</span> : t('consultantCodeLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
+      value={consultantCode}
+      onChange={handleConsultantCodeChange}
+      onBlur={() => handleBlur('consultantCode', consultantCode)}
+      onClick={() => handleFieldClick('consultantCode')}
+    />
 
-        <TextField
-          id="consultantName"
-          label={errors.consultantName ? <span className="error-text">*Required</span> : 'Consultant Name'}
-          variant="outlined"
-          className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
-          value={consultantName}
-          onChange={handleConsultantNameChange}
-          onBlur={() => handleBlur('consultantName', consultantName)}
-          onClick={() => handleFieldClick('consultantName')}
-        />
+    <TextField
+      id="consultantName"
+      label={errors.consultantName ? <span className="error-text">*{t('Required')}</span> : t('consultantNameLabel')}
+      variant="outlined"
+      className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
+      value={consultantName}
+      onChange={handleConsultantNameChange}
+      onBlur={() => handleBlur('consultantName', consultantName)}
+      onClick={() => handleFieldClick('consultantName')}
+    />
   </div>
 </div>
 
     <div className="card bg-light mb-3">
         <div className="card-header p-3">
-        <h1 className="subHeadings">Construction Details</h1>
+        <h1 className="subHeadings">{t('constructionDetailsHeader')}</h1>
         </div>
         <div className="card-body">
         <TextField
-        labelId="advertisement-label"
-  id="advertisement"
-  select
-  value={advertisementType}
-  onChange={handleAdvertisementTypeChange}
-  label={errors.advertisementType ? <span className="error-text">*Required</span> : 'Advertisement Type'}
-  variant="outlined"
-  className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
-  style={{ width: '100%', marginTop: '15px' }}
-  onBlur={() => handleBlur('advertisementType', advertisementType)}
-  onMouseDown={() => handleFieldClick('advertisementType')}
-      >
-        {advertisementTypes.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
+              labelId="advertisement-label"
+              id="advertisement"
+              select
+              value={advertisementType}
+              onChange={handleAdvertisementTypeChange}
+              label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
+              variant="outlined"
+              className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
+              style={{ width: '100%', marginTop: '15px' }}
+              onBlur={() => handleBlur('advertisementType', advertisementType)}
+              onMouseDown={() => handleFieldClick('advertisementType')}
+            >
+              {advertisementTypes.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
   
         </div>
 
@@ -348,46 +351,46 @@ const ChBuildingInfo = () => {
         <div className='constructionStagesContainer'>
         
         <div className="card-header d-flex justify-content-between align-items-center p-3">
-    <h1 className="subHeadings mb-0">Stages</h1>
+        <h1 className="subHeadings mb-0">{t('stagesHeader')}</h1>
     
-    <button type="button" className="p-2 buttonAdd" onClick={handleAddStage}>
-        Add
-    </button>
+        <button type="button" className="p-2 buttonAdd" onClick={handleAddStage}>
+                {t('addStageButton')}
+              </button>
+
 </div>
 
    
-       <Scrollbars style={{height: '200px' }}>
-        {constructionStages.map((stage) => (
-  <div key={stage} className="m-3 mb-0 d-flex align-items-center">
-    <TextField
-      select
-      value={selectedValues[stage] || ''}
-      onChange={(e) => handleStageChange(stage, e.target.value)}
-      label={errors[stage] ? <span className="error-text">*Required</span> : 'Stage'}
-      variant="outlined"
-      className={`form-control inputEl m-2 ${errors[stage] ? 'error' : ''}`}
-      style={{ width: '100%', marginTop: '15px' }}
-      onBlur={() => handleBlur(stage, selectedValues[stage])}
-      onMouseDown={() => handleFieldClick(stage)}
-    >
-      {stageOptions.map((option) => (
-        <MenuItem key={option} value={option}>
-          {option}
-        </MenuItem>
-      ))}
-      
-    </TextField>
-    
-    <button
-      type='button'
-      className="ml-3 mb-1 btn mt-1"
-      onClick={() => handleDeleteStage(stage)}
-    >
-      <i className="fas fa-minus-circle red-icon"></i>
-    </button>
-  </div>
-))}
-</Scrollbars>
+<Scrollbars style={{ height: '200px' }}>
+    {constructionStages.map((stage) => (
+      <div key={stage} className="m-3 mb-0 d-flex align-items-center">
+        <TextField
+          select
+          value={selectedValues[stage] || ''}
+          onChange={(e) => handleStageChange(stage, e.target.value)}
+          label={errors[stage] ? <span className="error-text">* {t('Required')}</span> : t('stagesHeader')}
+          variant="outlined"
+          className={`form-control inputEl m-2 ${errors[stage] ? 'error' : ''}`}
+          style={{ width: '100%', marginTop: '15px' }}
+          onBlur={() => handleBlur(stage, selectedValues[stage])}
+          onMouseDown={() => handleFieldClick(stage)}
+        >
+          {stageOptions.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <button
+          type="button"
+          className="ml-3 mb-1 btn mt-1"
+          onClick={() => handleDeleteStage(stage)}
+        >
+          <i className="fas fa-minus-circle red-icon"></i>
+        </button>
+      </div>
+    ))}
+  </Scrollbars>
 
   </div>
     
@@ -405,60 +408,58 @@ const ChBuildingInfo = () => {
      <div className="card bg-light mb-3">
         <div className='buildingDetailsContainer'>
         <div className="card-header d-flex justify-content-between align-items-center p-3">
-    <h1 className="subHeadings mb-0">Buildings Details </h1>
-        <button type="button" className="p-2 buttonAdd" onClick={handleAddBuildingStage}>
-              Add
+        <h1 className="subHeadings mb-0">{t('buildingsDetailsHeader')}</h1>
+            <button type="button" className="p-2 buttonAdd" onClick={handleAddBuildingStage}>
+              {t('addBuildingButton')}
             </button>
          </div>
         
          <div className="card-body">
          <div className="table-responsive">
-         <Scrollbars style={{height: '200px' }}>
-        <table className="table table-bordered">
-    <thead className="thead-light"> 
-      <tr>
-        <th>Building Number</th>
-        <th>Total Size</th>
-        <th>Number of Floors</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-   
-    {buildingData.map((building, index) => (
-            <tr key={index}>
-              <td>{building.buildingNumber}</td>
-              <td>
-                <input
-                  type="text"
-                  className="no-outline-input"
-                  value={building.totalSize}
-                  onChange={(e) => handleInputChange(index, 'totalSize', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  className="no-outline-input"
-                  value={building.numberOfFloors}
-                  onChange={(e) => handleInputChange(index, 'numberOfFloors', e.target.value)}
-                />
-              </td>
-              <td>
-              <button
-          type="button"
-          className="btn"
-          onClick={() => handleDeleteBuilding(index)}
-        >
-          <i class="fas fa-minus-circle red-icon"></i>
-        </button>
-              </td>
-            </tr>
-          ))}
-          
-    </tbody>
-  </table>
-  </Scrollbars>
+         <Scrollbars style={{ height: '200px' }}>
+                <table className="table table-bordered">
+                  <thead className="thead-light">
+                    <tr>
+                      <th>{t('buildingNumberLabel')}</th>
+                      <th>{t('totalSizeLabel')}</th>
+                      <th>{t('numberOfFloorsLabel')}</th>
+                      <th>{t('deleteLabel')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {buildingData.map((building, index) => (
+                      <tr key={index}>
+                        <td>{building.buildingNumber}</td>
+                        <td>
+                          <input
+                            type="text"
+                            className="no-outline-input"
+                            value={building.totalSize}
+                            onChange={(e) => handleInputChange(index, 'totalSize', e.target.value)}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            className="no-outline-input"
+                            value={building.numberOfFloors}
+                            onChange={(e) => handleInputChange(index, 'numberOfFloors', e.target.value)}
+                          />
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            className="btn"
+                            onClick={() => handleDeleteBuilding(index)}
+                          >
+                            <i className="fas fa-minus-circle red-icon"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </Scrollbars>
         </div>
       </div>
       </div>
@@ -468,22 +469,22 @@ const ChBuildingInfo = () => {
 
 
       <div className='nextButtonCont'>       
-        <button  className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
-              Next
-            </button>
+      <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
+            {t('nextButton')}
+          </button>
       </div>
    
       <DraggableDialog
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        allFieldsFilled={!confirmationDialog} // Pass the appropriate flag
-      />
-    
-      <DraggableDialog
-        open={confirmationDialog}
-        onClose={() => setConfirmationDialog(false)}
-        allFieldsFilled={false} // Pass the appropriate flag
-      />
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          allFieldsFilled={!confirmationDialog}
+        />
+
+        <DraggableDialog
+          open={confirmationDialog}
+          onClose={() => setConfirmationDialog(false)}
+          allFieldsFilled={false}
+        />
 </div>
 </div>
    

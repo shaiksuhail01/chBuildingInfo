@@ -6,7 +6,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Routes>
+        <Routes>
         <Route path="/" element={<LoginForm/>} />
         <Route path="/building-info" element={<ChBuildingInfo/>}/>
       </Routes>
