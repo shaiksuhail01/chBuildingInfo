@@ -1,6 +1,6 @@
 .mainContainer{
-  background-image: linear-gradient(to bottom right, #9fc5d7,#b3e6ff);
-  padding: 15px;
+  background-image: linear-gradient(to bottom right, #9c9c9c,#90b8cc);
+  padding: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;

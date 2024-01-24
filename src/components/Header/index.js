@@ -42,8 +42,10 @@ export default function Header(props) {
 
   return (
     <React.Fragment>
-     <AppBar sx={{ 
-        backgroundColor:'#e6f7ff',height:'100px'}}>
+     <AppBar sx={{
+        backgroundImage: 'linear-gradient(to bottom right, #90b8cc,#9c9c9c )',
+        height: '100px',
+      }}>
         <Toolbar>
           <Box sx={{ display: 'flex', justifyContent: currentLanguage === 'ar' ? 'flex-start' : 'flex-end', flexGrow: 1 }}>
             <Button
