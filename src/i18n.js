@@ -37,7 +37,14 @@ const resources = {
       numberOfFloorsLabel: 'Number of Floors',
       deleteLabel: 'Delete',
       nextButton: 'Next',
-      Required:'Required'
+      Required:'*Required',
+      "confirmationTitle": "Confirmation",
+      "confirmationText": "Are you sure you want to save the changes?",
+      "cancelButton": "Cancel",
+      "yesButton": "Yes",
+      "requiredFieldsTitle": "All the fields are required",
+      "requiredFieldsText": "Please fill all the given fields to proceed next.",
+      "okButton": "Ok"
     },
   },
   ar: {
@@ -74,7 +81,23 @@ const resources = {
       numberOfFloorsLabel: 'عدد الطوابق',
       deleteLabel: 'حذف',
       nextButton: 'التالي',
-      Required:'مطلوب'
+      Required:'مطلوب*',
+      RadioAds: 'إعلانات الراديو',
+      OnlineVideoAds: 'إعلانات الفيديو عبر الإنترنت',
+      EmailMarketing: 'تسويق البريد الإلكتروني',
+      Newspaper: 'صحيفة',
+      EventSponsorship: 'رعاية الفعاليات',
+      Option1: '١ الخيار',
+      Option2: '٢ الخيار',
+      Option3: '٣ الخيار',
+      Option4: '٤ الخيار',
+      "confirmationTitle": "تأكيد",
+      "confirmationText": "هل أنت متأكد أنك تريد حفظ التغييرات؟",
+      "cancelButton": "إلغاء",
+      "yesButton": "نعم",
+      "requiredFieldsTitle": "جميع الحقول مطلوبة",
+      "requiredFieldsText": "يرجى ملء جميع الحقول المطلوبة للمضي قدمًا.",
+      "okButton": "موافق"
     },
   },
 };

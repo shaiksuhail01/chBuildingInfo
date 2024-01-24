@@ -264,7 +264,7 @@ const ChBuildingInfo = () => {
   <div className="card-body">
   <TextField
       id="plotNum"
-      label={errors.plotNumber ? <span className="error-text"> *  {t('Required')}</span> : t('plotNumberLabel')}
+      label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
       value={plotNumber}
@@ -275,7 +275,7 @@ const ChBuildingInfo = () => {
 
     <TextField
       id="krookie"
-      label={errors.krookieNumber ? <span className="error-text">*{t('Required')}</span> : t('krookieNumberLabel')}
+      label={errors.krookieNumber ? <span className="error-text">{t('Required')}</span> : t('krookieNumberLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
       value={krookieNumber}
@@ -286,7 +286,7 @@ const ChBuildingInfo = () => {
 
     <TextField
       id="plotAdd"
-      label={errors.plotAddress ? <span className="error-text">*{t('Required')}</span> : t('plotAddressLabel')}
+      label={errors.plotAddress ? <span className="error-text">{t('Required')}</span> : t('plotAddressLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
       value={plotAddress}
@@ -297,7 +297,7 @@ const ChBuildingInfo = () => {
 
     <TextField
       id="consultant"
-      label={errors.consultantCode ? <span className="error-text">*{t('Required')}</span> : t('consultantCodeLabel')}
+      label={errors.consultantCode ? <span className="error-text">{t('Required')}</span> : t('consultantCodeLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
       value={consultantCode}
@@ -308,7 +308,7 @@ const ChBuildingInfo = () => {
 
     <TextField
       id="consultantName"
-      label={errors.consultantName ? <span className="error-text">*{t('Required')}</span> : t('consultantNameLabel')}
+      label={errors.consultantName ? <span className="error-text">{t('Required')}</span> : t('consultantNameLabel')}
       variant="outlined"
       className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
       value={consultantName}
@@ -325,24 +325,24 @@ const ChBuildingInfo = () => {
         </div>
         <div className="card-body">
         <TextField
-              labelId="advertisement-label"
-              id="advertisement"
-              select
-              value={advertisementType}
-              onChange={handleAdvertisementTypeChange}
-              label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
-              variant="outlined"
-              className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
-              style={{ width: '100%', marginTop: '15px' }}
-              onBlur={() => handleBlur('advertisementType', advertisementType)}
-              onMouseDown={() => handleFieldClick('advertisementType')}
-            >
-              {advertisementTypes.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
+      labelId="advertisement-label"
+      id="advertisement"
+      select
+      value={advertisementType}
+      onChange={handleAdvertisementTypeChange}
+      label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
+      style={{ width: '100%', marginTop: '15px' }}
+      onBlur={() => handleBlur('advertisementType', advertisementType)}
+      onMouseDown={() => handleFieldClick('advertisementType')}
+    >
+      {advertisementTypes.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+        {t(option.value)}
+        </MenuItem>
+      ))}
+    </TextField>
   
         </div>
 
@@ -363,23 +363,23 @@ const ChBuildingInfo = () => {
 <Scrollbars style={{ height: '200px' }}>
     {constructionStages.map((stage) => (
       <div key={stage} className="m-3 mb-0 d-flex align-items-center">
-        <TextField
-          select
-          value={selectedValues[stage] || ''}
-          onChange={(e) => handleStageChange(stage, e.target.value)}
-          label={errors[stage] ? <span className="error-text">* {t('Required')}</span> : t('stagesHeader')}
-          variant="outlined"
-          className={`form-control inputEl m-2 ${errors[stage] ? 'error' : ''}`}
-          style={{ width: '100%', marginTop: '15px' }}
-          onBlur={() => handleBlur(stage, selectedValues[stage])}
-          onMouseDown={() => handleFieldClick(stage)}
-        >
-          {stageOptions.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
+      <TextField
+      select
+      value={selectedValues[stage] || ''}
+      onChange={(e) => handleStageChange(stage, e.target.value)}
+      label={errors[stage] ? <span className="error-text">{t('Required')}</span> : t('stagesHeader')}
+      variant="outlined"
+      className={`form-control inputEl m-2 ${errors[stage] ? 'error' : ''}`}
+      style={{ width: '100%', marginTop: '15px' }}
+      onBlur={() => handleBlur(stage, selectedValues[stage])}
+      onMouseDown={() => handleFieldClick(stage)}
+    >
+      {stageOptions.map((option) => (
+        <MenuItem key={option} value={option}>
+          {t(option)}
+        </MenuItem>
+      ))}
+    </TextField>
 
         <button
           type="button"

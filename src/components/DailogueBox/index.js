@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Paper from '@mui/material/Paper';
 import Draggable from 'react-draggable';
+import { useTranslation } from 'react-i18next';
 
 function PaperComponent(props) {
   return (
@@ -17,12 +18,14 @@ function PaperComponent(props) {
 }
 
 const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
+  const { t } = useTranslation();
+
   const handleClose = () => {
     onClose();
   };
 
   const handleSubscribe = () => {
-    // Implement the logic for handling the subscription or saving changes
+   
     handleClose();
   };
 
@@ -31,33 +34,33 @@ const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
       {allFieldsFilled ? (
         <>
           <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-            Confirmation
+            {t('confirmationTitle')}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Are you sure you want to save the changes..?
+              {t('confirmationText')}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleClose}>
-              Cancel
+              {t('cancelButton')}
             </Button>
-            <Button onClick={handleSubscribe}>Yes</Button>
+            <Button onClick={handleSubscribe}>{t('yesButton')}</Button>
           </DialogActions>
         </>
       ) : (
         <>
           <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-            All the fields are required
+            {t('requiredFieldsTitle')}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Please fill all the given fields to proceed next.
+              {t('requiredFieldsText')}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>
-              Ok
+              {t('okButton')}
             </Button>
           </DialogActions>
         </>
