@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .mainContainer{
   background-image: linear-gradient(to bottom right, #9c9c9c,#90b8cc);
   padding: 40px;
@@ -5,7 +11,10 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
 
 .loginPagesContainer {
      background-color: #ffffff;
@@ -97,14 +106,13 @@
   @media only screen and (min-width: 1000px) {
     
     .loginContainer {
-       margin: 50px;
-
+       margin:60px;
       }
     .loginfullPageContainer{
         flex-direction: row;  
     }
     .loginPagesContainer{
-    margin: 30px;
+    margin: 70px;
     }
     .button{
       width: 400px;

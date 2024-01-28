@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Paper from '@mui/material/Paper';
 import Draggable from 'react-draggable';
 import { useTranslation } from 'react-i18next';
+import "./index.css"
 
 function PaperComponent(props) {
   return (
@@ -18,14 +19,14 @@ function PaperComponent(props) {
 }
 
 const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
 
   const handleClose = () => {
     onClose();
   };
 
   const handleSubscribe = () => {
-   
     handleClose();
   };
 
@@ -37,7 +38,7 @@ const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
             {t('confirmationTitle')}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText className={isArabic ? 'rtl' : ''}>
               {t('confirmationText')}
             </DialogContentText>
           </DialogContent>
@@ -54,7 +55,7 @@ const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
             {t('requiredFieldsTitle')}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText className={isArabic ? 'rtl' : ''}>
               {t('requiredFieldsText')}
             </DialogContentText>
           </DialogContent>

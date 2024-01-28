@@ -37,6 +37,7 @@
     font-size: 20px;
     margin-top: 10px;
 }
+
 .label{
     color: #000000;
     font-size: 16px;
@@ -98,3 +99,10 @@
     border-width: 0px;
     width: 70px;
 }
+.rtl {
+    direction: rtl;
+  }
+  
+  .rtl-text {
+    text-align: right;
+  }

@@ -80,7 +80,8 @@ const ChBuildingInfo = () => {
   const [showModal, setShowModal] = useState(false);
   const [confirmationDialog, setConfirmationDialog] = useState(false);
 
-  const { t } = useTranslation();
+  const { t,i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar'; 
   const [buildingData, setBuildingData] = useState([
     { buildingNumber: '1', totalSize: '', numberOfFloors: '' },
     { buildingNumber: '2', totalSize: '', numberOfFloors: '' },
@@ -251,9 +252,9 @@ const ChBuildingInfo = () => {
 
   
   return (
-    <div className="buildingInfoBg" >
+    <div className='buildingInfoBg'>
      <Header />
-      <div className="buildinInfoContainer" >
+      <div className={`buildinInfoContainer ${isArabic ? 'rtl' : ''}`} >
       <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
       <div className='plotConstructionContainer'>
         <div className="card bg-light mb-3">
@@ -270,7 +271,7 @@ const ChBuildingInfo = () => {
       onChange={handlePlotNumberChange}
       onBlur={() => handleBlur('plotNumber', plotNumber)}
       onClick={() => handleFieldClick('plotNumber')}
-
+      /*size='small' */
     />
 
     <TextField
