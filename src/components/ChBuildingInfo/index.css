@@ -78,6 +78,11 @@
     margin: 5px;
 }
 
+.ButtonLanguage {
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+  }
 @media only screen and (min-width: 800px) {
 .buildingInfoBg{
     padding: 100px;

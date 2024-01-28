@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import DraggableDialog from '../DailogueBox';
-import Header from '../Header';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from '@mui/material/TextField';
 import {  MenuItem, } from '@material-ui/core';
@@ -8,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Header from '../Header';
 
 const suggestionList=[
     {
@@ -251,10 +251,9 @@ const ChBuildingInfo = () => {
 
   
   return (
-    <div className="buildingInfoBg">
-     <Header/>
-      <div className="buildinInfoContainer">
-     
+    <div className="buildingInfoBg" >
+     <Header />
+      <div className="buildinInfoContainer" >
       <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
       <div className='plotConstructionContainer'>
         <div className="card bg-light mb-3">
@@ -271,6 +270,7 @@ const ChBuildingInfo = () => {
       onChange={handlePlotNumberChange}
       onBlur={() => handleBlur('plotNumber', plotNumber)}
       onClick={() => handleFieldClick('plotNumber')}
+
     />
 
     <TextField
