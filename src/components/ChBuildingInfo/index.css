@@ -5,7 +5,7 @@
     padding: 20px;
 }
 .buildinInfoContainer{
-    background-color: #ffffff;
+    background-color: #eef9fc;
     padding: 20px;
     border-radius: 20px;
     
@@ -33,10 +33,11 @@
 .subHeadings{
     font-family: "Roboto",sans-serif;
     font-weight: bold;
-    color:#000000;
+    color:#6c757d;
     font-size: 20px;
     margin-top: 10px;
 }
+
 
 .label{
     color: #000000;
@@ -84,6 +85,7 @@
     top: 100px; /* Adjust as needed */
     right: 10px; /* Adjust as needed */
   }
+ 
 @media only screen and (min-width: 800px) {
 .buildingInfoBg{
     padding: 100px;

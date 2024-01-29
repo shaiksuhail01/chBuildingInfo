@@ -257,8 +257,8 @@ const ChBuildingInfo = () => {
       <div className={`buildinInfoContainer ${isArabic ? 'rtl' : ''}`} >
       <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
       <div className='plotConstructionContainer'>
-        <div className="card bg-light mb-3">
-  <div className="card-header p-3">
+        <div className="card bg-white mb-3 shadow rounded border-0">
+  <div className="p-3">
   <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
   </div>
   <div className="card-body">
@@ -320,8 +320,8 @@ const ChBuildingInfo = () => {
   </div>
 </div>
 
-    <div className="card bg-light mb-3">
-        <div className="card-header p-3">
+    <div className="card bg-white mb-3 shadow rounded border-0">
+        <div className="p-3">
         <h1 className="subHeadings">{t('constructionDetailsHeader')}</h1>
         </div>
         <div className="card-body">
@@ -351,7 +351,7 @@ const ChBuildingInfo = () => {
         
         <div className='constructionStagesContainer'>
         
-        <div className="card-header d-flex justify-content-between align-items-center p-3">
+        <div className="d-flex justify-content-between align-items-center p-3">
         <h1 className="subHeadings mb-0">{t('stagesHeader')}</h1>
     
         <button type="button" className="p-2 buttonAdd" onClick={handleAddStage}>
@@ -400,15 +400,9 @@ const ChBuildingInfo = () => {
      </div>
      
 
-
-
-
-
-
-
-     <div className="card bg-light mb-3">
+     <div className="card bg-white mb-3 shadow rounded border-0">
         <div className='buildingDetailsContainer'>
-        <div className="card-header d-flex justify-content-between align-items-center p-3">
+        <div className="d-flex justify-content-between align-items-center p-3">
         <h1 className="subHeadings mb-0">{t('buildingsDetailsHeader')}</h1>
             <button type="button" className="p-2 buttonAdd" onClick={handleAddBuildingStage}>
               {t('addBuildingButton')}
@@ -421,10 +415,10 @@ const ChBuildingInfo = () => {
                 <table className="table table-bordered">
                   <thead className="thead-light">
                     <tr>
-                      <th>{t('buildingNumberLabel')}</th>
-                      <th>{t('totalSizeLabel')}</th>
-                      <th>{t('numberOfFloorsLabel')}</th>
-                      <th>{t('deleteLabel')}</th>
+                      <th  style={{ color: '#6c757d' }}>{t('buildingNumberLabel')}</th>
+                      <th  style={{ color: '#6c757d' }}>{t('totalSizeLabel')}</th>
+                      <th  style={{ color: '#6c757d' }}>{t('numberOfFloorsLabel')}</th>
+                      <th  style={{ color: '#6c757d' }}>{t('deleteLabel')}</th>
                     </tr>
                   </thead>
                   <tbody>
