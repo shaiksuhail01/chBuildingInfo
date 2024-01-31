@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Header from '../Header';
 
+
 const suggestionList=[
     {
         id:1,
@@ -319,8 +320,8 @@ const ChBuildingInfo = () => {
     />
   </div>
 </div>
-
-    <div className="card bg-white mb-3 shadow rounded border-0">
+<div style={{ marginRight: '20px' }}></div>
+    <div className="card bg-white mb-3 shadow rounded border-0 ">
         <div className="p-3">
         <h1 className="subHeadings">{t('constructionDetailsHeader')}</h1>
         </div>
@@ -346,8 +347,6 @@ const ChBuildingInfo = () => {
     </TextField>
   
         </div>
-
-       
         
         <div className='constructionStagesContainer'>
         
@@ -398,7 +397,8 @@ const ChBuildingInfo = () => {
     
      </div>
      </div>
-     
+     <div style={{ marginBottom: '20px' }}></div>
+
 
      <div className="card bg-white mb-3 shadow rounded border-0">
         <div className='buildingDetailsContainer'>
@@ -460,10 +460,8 @@ const ChBuildingInfo = () => {
       </div>
       </div>
 
-
-
-
-      <div className='nextButtonCont'>       
+      <div style={{ marginBottom: '28px' }}></div>
+      <div className='nextButtonCont'> 
       <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
             {t('nextButton')}
           </button>
