@@ -31,7 +31,7 @@ const DraggableDialog = ({ open, onClose, allFieldsFilled }) => {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title">
+    <Dialog open={open} onClose={handleClose} PaperComponent={PaperComponent} aria-labelledby="draggable-dialog-title" className={`${isArabic ? 'rtl' : ''}`}>
       {allFieldsFilled ? (
         <>
           <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">

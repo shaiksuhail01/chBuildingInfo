@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@3id/connect": "^0.4.1",
+    "@ceramicnetwork/3id-did-resolver": "^3.4.0",
+    "@ceramicnetwork/http-client": "^4.0.0",
+    "@ceramicstudio/idx": "^0.12.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-free": "^6.5.1",
@@ -13,6 +17,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.2",
+    "dids": "^5.0.2",
+    "ethers": "^6.10.0",
     "fontawesome": "^5.6.3",
     "i18next": "^23.7.18",
     "react": "^18.2.0",
@@ -23,6 +29,8 @@
     "react-i18next": "^14.0.1",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
+    "stylis": "^4.3.1",
+    "stylis-plugin-rtl": "^2.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

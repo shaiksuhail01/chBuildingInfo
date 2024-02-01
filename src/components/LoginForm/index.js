@@ -3,8 +3,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import TextField from '@mui/material/TextField';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import rtlPlugin from 'stylis-plugin-rtl';
+import { prefixer } from 'stylis';
 import './index.css';
 import Header from '../Header';
+
+const cacheRtl = createCache({
+  key: 'muirtl',
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
 
 const LoginForm = () => {
   const { t, i18n } = useTranslation();
@@ -39,6 +49,8 @@ const LoginForm = () => {
             <h1 className={`headingOne ${isArabic ? 'rtl' : ''}`}>{t('loginMethodTwo')}</h1>
             <img src="/images/mobile.jpg" alt="loginImage" className="imageLogin" />
             <div className="mobileContainer">
+            {i18n.language === 'ar' ? (
+              <CacheProvider value={cacheRtl}>
               <TextField
                 id="mobileNumber"
                 name="mobileNumber"
@@ -56,6 +68,28 @@ const LoginForm = () => {
                 }}
                 onClick={() => setIsMobileNumberFilled(true)}
               />
+            </CacheProvider>
+            ):(
+              <>
+              <TextField
+                id="mobileNumber"
+                name="mobileNumber"
+                label={isMobileNumberFilled ? t('loginMethodTwoDescription') : <span className="error-text">{t('Required')}</span>}
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                size="small"
+                className={`mb-3 mt-3 ${isArabic ? 'rtl' : ''}`}
+                value={mobileNumber}
+  
+                onChange={(e) => {
+                  setMobileNumber(e.target.value);
+                  setIsMobileNumberFilled(true);
+                }}
+                onClick={() => setIsMobileNumberFilled(true)}
+              />
+              </>
+            )}
               <button className="button" onClick={onClickLoginButton}>
                 {t('loginButton')}
               </button>

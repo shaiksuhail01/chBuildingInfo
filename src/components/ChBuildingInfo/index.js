@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import rtlPlugin from 'stylis-plugin-rtl';
+import { prefixer } from 'stylis';
 import Header from '../Header';
 
 
@@ -69,6 +73,13 @@ const advertisementTypes = [
 
 const stageOptions = ['Option1', 'Option2', 'Option3', 'Option4'];
 
+const cacheRtl = createCache({
+  key: 'muirtl',
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
+
+
 const ChBuildingInfo = () => {
   const [plotNumber,setPlotNumber]=useState('')
   const [krookieNumber, setKrookieNumber] = useState('');
@@ -84,10 +95,12 @@ const ChBuildingInfo = () => {
   const { t,i18n } = useTranslation();
   const isArabic = i18n.language === 'ar'; 
   const [buildingData, setBuildingData] = useState([
-    { buildingNumber: '1', totalSize: '', numberOfFloors: '' },
-    { buildingNumber: '2', totalSize: '', numberOfFloors: '' },
+    { buildingNumber: '', totalSize: '', numberOfFloors: '' },
+    { buildingNumber: '', totalSize: '', numberOfFloors: '' },
    
   ]);
+
+
 
   const [errors, setErrors] = useState({
     plotNumber: false,
@@ -165,7 +178,7 @@ const ChBuildingInfo = () => {
   const handleAddBuildingStage = () => {
     setBuildingData(prevData => [
       ...prevData,
-      { buildingNumber: `${prevData.length + 1}`, totalSize: '', numberOfFloors: '' },
+      { buildingNumber: '', totalSize: '', numberOfFloors: '' },
     ]);
   };
   
@@ -263,19 +276,21 @@ const ChBuildingInfo = () => {
   <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
   </div>
   <div className="card-body">
-  <TextField
-      id="plotNum"
-      label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
-      variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
-      value={plotNumber}
-      onChange={handlePlotNumberChange}
-      onBlur={() => handleBlur('plotNumber', plotNumber)}
-      onClick={() => handleFieldClick('plotNumber')}
-      /*size='small' */
-    />
+  
+  {i18n.language === 'ar' ? (
+  <CacheProvider value={cacheRtl}>
+          <TextField
+            id="plotNum"
+            label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
+            variant="outlined"
+            className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
+            value={plotNumber}
+            onChange={handlePlotNumberChange}
+            onBlur={() => handleBlur('plotNumber', plotNumber)}
+            onClick={() => handleFieldClick('plotNumber')}
+          />
 
-    <TextField
+      <TextField
       id="krookie"
       label={errors.krookieNumber ? <span className="error-text">{t('Required')}</span> : t('krookieNumberLabel')}
       variant="outlined"
@@ -286,7 +301,9 @@ const ChBuildingInfo = () => {
       onClick={() => handleFieldClick('krookieNumber')}
     />
 
-    <TextField
+
+    
+      <TextField
       id="plotAdd"
       label={errors.plotAddress ? <span className="error-text">{t('Required')}</span> : t('plotAddressLabel')}
       variant="outlined"
@@ -296,6 +313,7 @@ const ChBuildingInfo = () => {
       onBlur={() => handleBlur('plotAddress', plotAddress)}
       onClick={() => handleFieldClick('plotAddress')}
     />
+
 
     <TextField
       id="consultant"
@@ -308,7 +326,8 @@ const ChBuildingInfo = () => {
       onClick={() => handleFieldClick('consultantCode')}
     />
 
-    <TextField
+    
+     <TextField
       id="consultantName"
       label={errors.consultantName ? <span className="error-text">{t('Required')}</span> : t('consultantNameLabel')}
       variant="outlined"
@@ -318,6 +337,68 @@ const ChBuildingInfo = () => {
       onBlur={() => handleBlur('consultantName', consultantName)}
       onClick={() => handleFieldClick('consultantName')}
     />
+   
+    </CacheProvider>
+
+  ):(
+    <>
+    <TextField
+          id="plotNum"
+          label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
+          variant="outlined"
+          className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
+          value={plotNumber}
+          onChange={handlePlotNumberChange}
+          onBlur={() => handleBlur('plotNumber', plotNumber)}
+          onClick={() => handleFieldClick('plotNumber')}
+        />
+
+     <TextField
+      id="krookie"
+      label={errors.krookieNumber ? <span className="error-text">{t('Required')}</span> : t('krookieNumberLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
+      value={krookieNumber}
+      onChange={handleKrookieChange}
+      onBlur={() => handleBlur('krookieNumber', krookieNumber)}
+      onClick={() => handleFieldClick('krookieNumber')}
+    />
+
+
+    <TextField
+      id="plotAdd"
+      label={errors.plotAddress ? <span className="error-text">{t('Required')}</span> : t('plotAddressLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
+      value={plotAddress}
+      onChange={handlePlotAddressChange}
+      onBlur={() => handleBlur('plotAddress', plotAddress)}
+      onClick={() => handleFieldClick('plotAddress')}
+    />
+
+     <TextField
+      id="consultant"
+      label={errors.consultantCode ? <span className="error-text">{t('Required')}</span> : t('consultantCodeLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
+      value={consultantCode}
+      onChange={handleConsultantCodeChange}
+      onBlur={() => handleBlur('consultantCode', consultantCode)}
+      onClick={() => handleFieldClick('consultantCode')}
+    />
+
+     <TextField
+      id="consultantName"
+      label={errors.consultantName ? <span className="error-text">{t('Required')}</span> : t('consultantNameLabel')}
+      variant="outlined"
+      className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
+      value={consultantName}
+      onChange={handleConsultantNameChange}
+      onBlur={() => handleBlur('consultantName', consultantName)}
+      onClick={() => handleFieldClick('consultantName')}
+    />
+    </>
+      )}
   </div>
 </div>
 <div style={{ marginRight: '20px' }}></div>
@@ -326,7 +407,31 @@ const ChBuildingInfo = () => {
         <h1 className="subHeadings">{t('constructionDetailsHeader')}</h1>
         </div>
         <div className="card-body">
-        <TextField
+        {i18n.language === 'ar' ? (
+      <CacheProvider value={cacheRtl}>
+      <TextField
+      labelId="advertisement-label"
+      id="advertisement"
+      select
+      value={advertisementType}
+      onChange={handleAdvertisementTypeChange}
+      label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
+      variant="outlined"
+      className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
+      style={{ width: '100%', marginTop: '15px' }}
+      onBlur={() => handleBlur('advertisementType', advertisementType)}
+      onMouseDown={() => handleFieldClick('advertisementType')}
+    >
+      {advertisementTypes.map((option) => (
+        <MenuItem key={option.value} value={option.value} className={`${isArabic ? 'rtl' : ''}`}>
+        {t(option.value)}
+        </MenuItem>
+      ))}
+    </TextField>
+    </CacheProvider>
+        ):(
+          <>
+          <TextField
       labelId="advertisement-label"
       id="advertisement"
       select
@@ -345,6 +450,8 @@ const ChBuildingInfo = () => {
         </MenuItem>
       ))}
     </TextField>
+          </>
+        )}
   
         </div>
         
@@ -360,10 +467,32 @@ const ChBuildingInfo = () => {
 </div>
 
    
-<Scrollbars style={{ height: '200px' }}>
+<Scrollbars style={{ height: '200px'}} autoHide autoHideTimeout={100} autoHideDuration={100}>
     {constructionStages.map((stage) => (
       <div key={stage} className="m-3 mb-0 d-flex align-items-center">
+      {i18n.language === 'ar' ? (
+        <CacheProvider value={cacheRtl}>
       <TextField
+      select
+      value={selectedValues[stage] || ''}
+      onChange={(e) => handleStageChange(stage, e.target.value)}
+      label={errors[stage] ? <span className="error-text">{t('Required')}</span> : t('stagesHeader')}
+      variant="outlined"
+      className={`form-control inputEl m-2 ${errors[stage] ? 'error' : ''}`}
+      style={{ width: '100%', marginTop: '15px' }}
+      onBlur={() => handleBlur(stage, selectedValues[stage])}
+      onMouseDown={() => handleFieldClick(stage)}
+    >
+      {stageOptions.map((option) => (
+        <MenuItem key={option} value={option} className={`${isArabic ? 'rtl' : ''}`}>
+          {t(option)}
+        </MenuItem>
+      ))}
+    </TextField>
+    </CacheProvider>
+      ):(
+        <>
+        <TextField
       select
       value={selectedValues[stage] || ''}
       onChange={(e) => handleStageChange(stage, e.target.value)}
@@ -380,7 +509,8 @@ const ChBuildingInfo = () => {
         </MenuItem>
       ))}
     </TextField>
-
+        </>
+      )}
         <button
           type="button"
           className="ml-3 mb-1 btn mt-1"
@@ -411,7 +541,7 @@ const ChBuildingInfo = () => {
         
          <div className="card-body">
          <div className="table-responsive">
-         <Scrollbars style={{ height: '200px' }}>
+         <Scrollbars style={{ height: '200px' }} autoHide autoHideTimeout={100} autoHideDuration={100}>
                 <table className="table table-bordered">
                   <thead className="thead-light">
                     <tr>
@@ -424,7 +554,12 @@ const ChBuildingInfo = () => {
                   <tbody>
                     {buildingData.map((building, index) => (
                       <tr key={index}>
-                        <td>{building.buildingNumber}</td>
+                         <input
+                          type="text"
+                          className="no-outline-input"
+                          value={building.buildingNumber}
+                          onChange={(e) => handleInputChange(index, 'buildingNumber', e.target.value)}
+                          />
                         <td>
                           <input
                             type="text"
