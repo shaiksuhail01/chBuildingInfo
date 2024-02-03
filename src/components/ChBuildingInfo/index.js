@@ -540,12 +540,12 @@ const ChBuildingInfo = () => {
          </div>
         
          <div className="card-body">
-         <div className="table-responsive">
+         <div className="table-responsive" style={{ border: '1px solid rgb(211, 211, 211)' }}>
          <Scrollbars style={{ height: '200px' }} autoHide autoHideTimeout={100} autoHideDuration={100}>
-                <table className="table table-bordered">
+                <table className="table table-bordered"  >
                   <thead className="thead-light">
                     <tr>
-                      <th  style={{ color: '#6c757d' }}>{t('buildingNumberLabel')}</th>
+                      <th  style={{ color: '#6c757d'}}>{t('buildingNumberLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('totalSizeLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('numberOfFloorsLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('deleteLabel')}</th>
