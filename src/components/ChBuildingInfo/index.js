@@ -39,29 +39,7 @@ const suggestionList=[
 
 ]
 
-const consultantList=[
-  {
-    id:1,
-    consultantCode:55,
-    consultantName:'Syed'
-  },
-  {
-    id:2,
-    consultantCode:56,
-    consultantName:'Suhail'
-  },
-  {
-    id:3,
-  consultantCode:57,
-    consultantName:'Rehan'
-  },
-  {
-    id:4,
-  consultantCode:58,
-    consultantName:'Roshan'
-  },
 
-]
 
 const advertisementTypes = [
   { value: 'RadioAds', label: 'Radio Ads' },
@@ -84,8 +62,6 @@ const ChBuildingInfo = () => {
   const [plotNumber,setPlotNumber]=useState('')
   const [krookieNumber, setKrookieNumber] = useState('');
   const [plotAddress, setPlotAddress] = useState('');
-  const [consultantCode, setConsultantCode] = useState('');
-  const [consultantName, setConsultantName] = useState('');
   const [advertisementType, setAdvertisementType] = useState('');
   const [constructionStages, setConstructionStages] = useState([1, 2]); 
   const [selectedValues, setSelectedValues] = useState({});
@@ -97,6 +73,8 @@ const ChBuildingInfo = () => {
   const [buildingData, setBuildingData] = useState([
     { buildingNumber: '', totalSize: '', numberOfFloors: '' },
     { buildingNumber: '', totalSize: '', numberOfFloors: '' },
+    { buildingNumber: '', totalSize: '', numberOfFloors: '' },
+  
    
   ]);
 
@@ -141,29 +119,6 @@ const ChBuildingInfo = () => {
     handleResetError('plotAddress');
   };
 
-  const handleConsultantCodeChange = (event) => {
-
-    const enteredConsultantCode = event.target.value;
-    setConsultantCode(enteredConsultantCode);
-    handleResetError('consultantCode');
-    const suggestion = consultantList.find(item => item.consultantCode.toString() === enteredConsultantCode);
-
-    if (suggestion) {
-      setConsultantName(suggestion.consultantName);
-      handleResetError('consultantName')
-    
-    } else {
-      setConsultantName('');
-     
-    }
-  };
-
-
-  const handleConsultantNameChange = (event) => {
-    setConsultantName(event.target.value);
-    handleResetError('consultantName');
-  };
-
   const handleAdvertisementTypeChange = (event) => {
     setAdvertisementType(event.target.value);
     handleResetError('advertisementType');
@@ -205,8 +160,6 @@ const ChBuildingInfo = () => {
       plotNumber,
       krookieNumber,
       plotAddress,
-      consultantCode,
-      consultantName,
       advertisementType,
     ];
 
@@ -270,139 +223,110 @@ const ChBuildingInfo = () => {
      <Header />
       <div className={`buildinInfoContainer ${isArabic ? 'rtl' : ''}`} >
       <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
-      <div className='plotConstructionContainer'>
+    <div>
         <div className="card bg-white mb-3 shadow rounded border-0">
   <div className="p-3">
   <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
   </div>
-  <div className="card-body">
+  <div className="card-body d-flex pb-5">
   
   {i18n.language === 'ar' ? (
   <CacheProvider value={cacheRtl}>
           <TextField
             id="plotNum"
-            label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
+            label={errors.plotNumber ? <span className="error-text">قم تصريح البناء {t('Required')}*</span> : t('plotNumberLabel')}
             variant="outlined"
-            className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
+            className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
             value={plotNumber}
             onChange={handlePlotNumberChange}
             onBlur={() => handleBlur('plotNumber', plotNumber)}
             onClick={() => handleFieldClick('plotNumber')}
+            style={{ marginLeft: '0.75rem' }}
+            
           />
 
       <TextField
       id="krookie"
-      label={errors.krookieNumber ? <span className="error-text">{t('Required')}</span> : t('krookieNumberLabel')}
+      label={errors.krookieNumber ? <span className="error-text">رقم الكروكي {t('Required')}*</span> : t('krookieNumberLabel')}
       variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
+      className={`form-control inputEl  ${errors.krookieNumber ? 'error' : ''}`}
       value={krookieNumber}
       onChange={handleKrookieChange}
       onBlur={() => handleBlur('krookieNumber', krookieNumber)}
       onClick={() => handleFieldClick('krookieNumber')}
+      style={{ marginLeft: '0.75rem' }}
     />
 
 
     
       <TextField
       id="plotAdd"
-      label={errors.plotAddress ? <span className="error-text">{t('Required')}</span> : t('plotAddressLabel')}
+      label={errors.plotAddress ? <span className="error-text">عنوان القطعة {t('Required')}*</span> : t('plotAddressLabel')}
       variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
+      className={`form-control inputEl  ${errors.plotAddress ? 'error' : ''}`}
       value={plotAddress}
       onChange={handlePlotAddressChange}
       onBlur={() => handleBlur('plotAddress', plotAddress)}
       onClick={() => handleFieldClick('plotAddress')}
+      style={{ marginLeft: '0.75rem' }}
     />
 
 
-    <TextField
-      id="consultant"
-      label={errors.consultantCode ? <span className="error-text">{t('Required')}</span> : t('consultantCodeLabel')}
-      variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
-      value={consultantCode}
-      onChange={handleConsultantCodeChange}
-      onBlur={() => handleBlur('consultantCode', consultantCode)}
-      onClick={() => handleFieldClick('consultantCode')}
-    />
-
-    
-     <TextField
-      id="consultantName"
-      label={errors.consultantName ? <span className="error-text">{t('Required')}</span> : t('consultantNameLabel')}
-      variant="outlined"
-      className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
-      value={consultantName}
-      onChange={handleConsultantNameChange}
-      onBlur={() => handleBlur('consultantName', consultantName)}
-      onClick={() => handleFieldClick('consultantName')}
-    />
-   
+  
     </CacheProvider>
 
   ):(
     <>
     <TextField
           id="plotNum"
-          label={errors.plotNumber ? <span className="error-text">{t('Required')}</span> : t('plotNumberLabel')}
+          label={errors.plotNumber ? <span className="error-text">*Building Permit Number {t('Required')}</span> : t('plotNumberLabel')}
           variant="outlined"
-          className={`form-control inputEl mb-3 ${errors.plotNumber ? 'error' : ''}`}
+          className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
           value={plotNumber}
           onChange={handlePlotNumberChange}
           onBlur={() => handleBlur('plotNumber', plotNumber)}
           onClick={() => handleFieldClick('plotNumber')}
+          
         />
 
      <TextField
       id="krookie"
-      label={errors.krookieNumber ? <span className="error-text">{t('Required')}</span> : t('krookieNumberLabel')}
+      label={errors.krookieNumber ? <span className="error-text">*KROOKIE Number {t('Required')}</span> : t('krookieNumberLabel')}
       variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.krookieNumber ? 'error' : ''}`}
+      className={`form-control inputEl ${errors.krookieNumber ? 'error' : ''}`}
       value={krookieNumber}
       onChange={handleKrookieChange}
       onBlur={() => handleBlur('krookieNumber', krookieNumber)}
       onClick={() => handleFieldClick('krookieNumber')}
+      style={{ marginLeft: '0.75rem' }}
     />
 
 
     <TextField
       id="plotAdd"
-      label={errors.plotAddress ? <span className="error-text">{t('Required')}</span> : t('plotAddressLabel')}
+      label={errors.plotAddress ? <span className="error-text">*Plot Address {t('Required')}</span> : t('plotAddressLabel')}
       variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.plotAddress ? 'error' : ''}`}
+      className={`form-control inputEl ${errors.plotAddress ? 'error' : ''}`}
       value={plotAddress}
       onChange={handlePlotAddressChange}
       onBlur={() => handleBlur('plotAddress', plotAddress)}
       onClick={() => handleFieldClick('plotAddress')}
+      style={{ marginLeft: '0.75rem' }}
     />
 
-     <TextField
-      id="consultant"
-      label={errors.consultantCode ? <span className="error-text">{t('Required')}</span> : t('consultantCodeLabel')}
-      variant="outlined"
-      className={`form-control inputEl mb-3 ${errors.consultantCode ? 'error' : ''}`}
-      value={consultantCode}
-      onChange={handleConsultantCodeChange}
-      onBlur={() => handleBlur('consultantCode', consultantCode)}
-      onClick={() => handleFieldClick('consultantCode')}
-    />
 
-     <TextField
-      id="consultantName"
-      label={errors.consultantName ? <span className="error-text">{t('Required')}</span> : t('consultantNameLabel')}
-      variant="outlined"
-      className={`form-control inputEl ${errors.consultantName ? 'error' : ''}`}
-      value={consultantName}
-      onChange={handleConsultantNameChange}
-      onBlur={() => handleBlur('consultantName', consultantName)}
-      onClick={() => handleFieldClick('consultantName')}
-    />
     </>
       )}
   </div>
 </div>
-<div style={{ marginRight: '20px' }}></div>
-    <div className="card bg-white mb-3 shadow rounded border-0 ">
+
+    
+     </div>
+ 
+
+     
+        <div className='plotConstructionContainer'>
+        <div className="card bg-white m-3 shadow rounded border-0 ">
         <div className="p-3">
         <h1 className="subHeadings">{t('constructionDetailsHeader')}</h1>
         </div>
@@ -415,7 +339,7 @@ const ChBuildingInfo = () => {
       select
       value={advertisementType}
       onChange={handleAdvertisementTypeChange}
-      label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
+      label={errors.advertisementType ? <span className="error-text">نوع الإعلان {t('Required')}*</span> : t('advertisementTypeLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
       style={{ width: '100%', marginTop: '15px' }}
@@ -437,7 +361,7 @@ const ChBuildingInfo = () => {
       select
       value={advertisementType}
       onChange={handleAdvertisementTypeChange}
-      label={errors.advertisementType ? <span className="error-text">{t('Required')}</span> : t('advertisementTypeLabel')}
+      label={errors.advertisementType ? <span className="error-text">*Advertisement Type {t('Required')}</span> : t('advertisementTypeLabel')}
       variant="outlined"
       className={`form-control inputEl mb-3 ${errors.advertisementType ? 'error' : ''}`}
       style={{ width: '100%', marginTop: '15px' }}
@@ -454,7 +378,6 @@ const ChBuildingInfo = () => {
         )}
   
         </div>
-        
         <div className='constructionStagesContainer'>
         
         <div className="d-flex justify-content-between align-items-center p-3">
@@ -523,14 +446,11 @@ const ChBuildingInfo = () => {
   </Scrollbars>
 
   </div>
-    
-    
-     </div>
-     </div>
-     <div style={{ marginBottom: '20px' }}></div>
+        </div>
+ 
+  
 
-
-     <div className="card bg-white mb-3 shadow rounded border-0">
+     <div className="card bg-white m-3 shadow rounded border-0">
         <div className='buildingDetailsContainer'>
         <div className="d-flex justify-content-between align-items-center p-3">
         <h1 className="subHeadings mb-0">{t('buildingsDetailsHeader')}</h1>
@@ -540,12 +460,12 @@ const ChBuildingInfo = () => {
          </div>
         
          <div className="card-body">
-         <div className="table-responsive" style={{ border: '1px solid rgb(211, 211, 211)' }}>
+         <div className="table-responsive">
          <Scrollbars style={{ height: '200px' }} autoHide autoHideTimeout={100} autoHideDuration={100}>
-                <table className="table table-bordered"  >
+                <table className="table table-bordered">
                   <thead className="thead-light">
                     <tr>
-                      <th  style={{ color: '#6c757d'}}>{t('buildingNumberLabel')}</th>
+                      <th  style={{ color: '#6c757d' }}>{t('buildingNumberLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('totalSizeLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('numberOfFloorsLabel')}</th>
                       <th  style={{ color: '#6c757d' }}>{t('deleteLabel')}</th>
@@ -593,6 +513,8 @@ const ChBuildingInfo = () => {
         </div>
       </div>
       </div>
+      </div>
+
       </div>
 
       <div style={{ marginBottom: '28px' }}></div>

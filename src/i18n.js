@@ -1,4 +1,3 @@
-// i18n.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -21,11 +20,9 @@ const resources = {
       mobileNumberRequired: 'Mobile number is required.',
       buildingInfoHeader: 'Customer House Building Information',
       plotInfoHeader: 'Plot Information',
-      plotNumberLabel: 'Plot Number',
+      plotNumberLabel: 'Building Permit Number',
       krookieNumberLabel: 'KROOKIE Number',
       plotAddressLabel: 'Plot Address',
-      consultantCodeLabel: 'Consultant Code',
-      consultantNameLabel: 'Consultant Name',
       constructionDetailsHeader: 'Construction Details',
       advertisementTypeLabel: 'Advertisement Type',
       stagesHeader: 'Stages',
@@ -37,7 +34,7 @@ const resources = {
       numberOfFloorsLabel: 'Number of Floors',
       deleteLabel: 'Delete',
       nextButton: 'Next',
-      Required:'*Required',
+      Required:'Required',
       "confirmationTitle": "Confirmation",
       "confirmationText": "Are you sure you want to save the changes?",
       "cancelButton": "Cancel",
@@ -65,7 +62,7 @@ const resources = {
       mobileNumberRequired: 'الرقم المحمول مطلوب.',
       buildingInfoHeader: 'معلومات بناء العميل',
       plotInfoHeader: 'معلومات القطعة',
-      plotNumberLabel: 'رقم القطعة',
+      plotNumberLabel: 'رقم تصريح البناء',
       krookieNumberLabel: 'رقم الكروكي',
       plotAddressLabel: 'عنوان القطعة',
       consultantCodeLabel: 'كود الاستشاري',
@@ -81,7 +78,7 @@ const resources = {
       numberOfFloorsLabel: 'عدد الطوابق',
       deleteLabel: 'حذف',
       nextButton: 'التالي',
-      Required:'مطلوب*',
+      Required:'مطلوب',
       RadioAds: 'إعلانات الراديو',
       OnlineVideoAds: 'إعلانات الفيديو عبر الإنترنت',
       EmailMarketing: 'تسويق البريد الإلكتروني',
