@@ -12,6 +12,17 @@ import createCache from '@emotion/cache';
 import rtlPlugin from 'stylis-plugin-rtl';
 import { prefixer } from 'stylis';
 import Header from '../Header';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import { styled,useTheme } from '@mui/material/styles';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
+
 
 
 const suggestionList=[
@@ -49,7 +60,15 @@ const advertisementTypes = [
   { value: 'EventSponsorship', label: 'Event Sponsorship' },
 ];
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  backgroundColor: theme.palette.grey[300], // You can adjust the shade of gray (e.g., grey[100], grey[200], grey[300], etc.)
+  color: theme.palette.common.black,
+  fontWeight: 'bold',
+  fontSize: 16,
+  border: `1px solid ${theme.palette.grey[400]}`
+}));
 const stageOptions = ['Option1', 'Option2', 'Option3', 'Option4'];
+
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -77,7 +96,7 @@ const ChBuildingInfo = () => {
   
    
   ]);
-
+  const theme = useTheme();
 
 
   const [errors, setErrors] = useState({
@@ -228,7 +247,7 @@ const ChBuildingInfo = () => {
   <div className="p-3">
   <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
   </div>
-  <div className="card-body d-flex pb-5">
+  <div className="card-body plotConstructionContainer d-flex pb-5">
   
   {i18n.language === 'ar' ? (
   <CacheProvider value={cacheRtl}>
@@ -241,20 +260,20 @@ const ChBuildingInfo = () => {
             onChange={handlePlotNumberChange}
             onBlur={() => handleBlur('plotNumber', plotNumber)}
             onClick={() => handleFieldClick('plotNumber')}
-            style={{ marginLeft: '0.75rem' }}
-            
+           
           />
 
       <TextField
       id="krookie"
       label={errors.krookieNumber ? <span className="error-text">رقم الكروكي {t('Required')}*</span> : t('krookieNumberLabel')}
       variant="outlined"
-      className={`form-control inputEl  ${errors.krookieNumber ? 'error' : ''}`}
+      className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
       value={krookieNumber}
       onChange={handleKrookieChange}
       onBlur={() => handleBlur('krookieNumber', krookieNumber)}
       onClick={() => handleFieldClick('krookieNumber')}
-      style={{ marginLeft: '0.75rem' }}
+      
+     
     />
 
 
@@ -268,7 +287,7 @@ const ChBuildingInfo = () => {
       onChange={handlePlotAddressChange}
       onBlur={() => handleBlur('plotAddress', plotAddress)}
       onClick={() => handleFieldClick('plotAddress')}
-      style={{ marginLeft: '0.75rem' }}
+      
     />
 
 
@@ -293,12 +312,12 @@ const ChBuildingInfo = () => {
       id="krookie"
       label={errors.krookieNumber ? <span className="error-text">*KROOKIE Number {t('Required')}</span> : t('krookieNumberLabel')}
       variant="outlined"
-      className={`form-control inputEl ${errors.krookieNumber ? 'error' : ''}`}
+      className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
       value={krookieNumber}
       onChange={handleKrookieChange}
       onBlur={() => handleBlur('krookieNumber', krookieNumber)}
       onClick={() => handleFieldClick('krookieNumber')}
-      style={{ marginLeft: '0.75rem' }}
+      
     />
 
 
@@ -311,7 +330,7 @@ const ChBuildingInfo = () => {
       onChange={handlePlotAddressChange}
       onBlur={() => handleBlur('plotAddress', plotAddress)}
       onClick={() => handleFieldClick('plotAddress')}
-      style={{ marginLeft: '0.75rem' }}
+      
     />
 
 
@@ -460,56 +479,60 @@ const ChBuildingInfo = () => {
          </div>
         
          <div className="card-body">
-         <div className="table-responsive">
-         <Scrollbars style={{ height: '200px' }} autoHide autoHideTimeout={100} autoHideDuration={100}>
-                <table className="table table-bordered">
-                  <thead className="thead-light">
-                    <tr>
-                      <th  style={{ color: '#6c757d' }}>{t('buildingNumberLabel')}</th>
-                      <th  style={{ color: '#6c757d' }}>{t('totalSizeLabel')}</th>
-                      <th  style={{ color: '#6c757d' }}>{t('numberOfFloorsLabel')}</th>
-                      <th  style={{ color: '#6c757d' }}>{t('deleteLabel')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {buildingData.map((building, index) => (
-                      <tr key={index}>
-                         <input
-                          type="text"
-                          className="no-outline-input"
-                          value={building.buildingNumber}
-                          onChange={(e) => handleInputChange(index, 'buildingNumber', e.target.value)}
-                          />
-                        <td>
-                          <input
-                            type="text"
-                            className="no-outline-input"
-                            value={building.totalSize}
-                            onChange={(e) => handleInputChange(index, 'totalSize', e.target.value)}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            className="no-outline-input"
-                            value={building.numberOfFloors}
-                            onChange={(e) => handleInputChange(index, 'numberOfFloors', e.target.value)}
-                          />
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            className="btn"
-                            onClick={() => handleDeleteBuilding(index)}
-                          >
-                            <i className="fas fa-minus-circle red-icon"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </Scrollbars>
+         <div className="table-responsive" style={{ maxHeight: '350px', overflowY: 'auto' }}>
+         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: '100%'}} >
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell style={{ color: '#6c757d',fontWeight: 'bold',fontSize:'16px' }}>{t('buildingNumberLabel')}</StyledTableCell>
+              <StyledTableCell style={{ color: '#6c757d',fontWeight: 'bold',fontSize:'16px' }}>{t('totalSizeLabel')}</StyledTableCell>
+              <StyledTableCell style={{ color: '#6c757d',fontWeight: 'bold',fontSize:'16px' }}>{t('numberOfFloorsLabel')}</StyledTableCell>
+              <StyledTableCell style={{ color: '#6c757d',fontWeight: 'bold',fontSize:'16px' }}>{t('deleteLabel')}</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {buildingData.map((building, index) => (
+              <TableRow key={index}>
+              <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
+                  <Input
+                    type="text"
+                    className="no-outline-input"
+                    value={building.buildingNumber}
+                    onChange={(e) => handleInputChange(index, 'buildingNumber', e.target.value)}
+                  />
+                </TableCell>
+                <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
+                  <Input
+                    type="text"
+                    className="no-outline-input"
+                    value={building.totalSize}
+                    onChange={(e) => handleInputChange(index, 'totalSize', e.target.value)}
+                  />
+                </TableCell>
+                <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
+                  <Input
+                    type="text"
+                    className="no-outline-input"
+                    value={building.numberOfFloors}
+                    onChange={(e) => handleInputChange(index, 'numberOfFloors', e.target.value)}
+                  />
+                </TableCell>
+                <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
+                  <Button
+                    type="button"
+                    onClick={() => handleDeleteBuilding(index)}
+                  >
+                    <i className="fas fa-minus-circle red-icon"></i>
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+   
+    </Paper>
         </div>
       </div>
       </div>
