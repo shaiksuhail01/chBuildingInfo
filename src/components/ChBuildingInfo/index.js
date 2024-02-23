@@ -111,9 +111,8 @@ const ChBuildingInfo = () => {
         const data = await response.json();
         setKrookieNumber(data.krookie);
         setSystemId(data.systemId);
-        //setPlotNumber(data.)
       } catch (error) {
-        setKrookieNumber(''); //setPlotNumber('')
+        setKrookieNumber(''); 
         setSystemId('');
         console.log('Error fetching data:', error);
       }
@@ -122,6 +121,24 @@ const ChBuildingInfo = () => {
       fetchData();
     }
   }, [plotNumber]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://it7863:8080/api/v1/plot?krookie=${krookieNumber}`);
+        const data = await response.json();
+        setSystemId(data.systemId);
+        setPlotNumber(data.buildingPermitNumber);
+      } catch (error) {
+        setPlotNumber('')
+        setSystemId('');
+        console.log('Error fetching data:', error);
+      }
+    };
+    if (krookieNumber !== '') {
+      fetchData();
+    }
+  }, [krookieNumber]);
 
 
   useEffect(() => {
@@ -234,6 +251,19 @@ const ChBuildingInfo = () => {
     });
   };
 
+  const handleRestClick = () => {
+      setPlotAddress('');
+      setPlotNumber('');
+      setConstructionStages([1]);
+      setKrookieNumber('');
+      setAdvertisementType([]);
+      setSelectedValues({});
+      setBuildingData([
+        { buildingNumber: '', totalSize: '', numberOfFloors: '' },
+      ]);
+
+    };
+  
 
   const handleNextButtonClick = () => {
     const requiredFields = [plotNumber, krookieNumber, plotAddress, advertisementType];
@@ -260,15 +290,7 @@ const ChBuildingInfo = () => {
         selectedValues,
         buildingData,
       });
-      setPlotAddress('');
-      setPlotNumber('');
-      setConstructionStages([1]);
-      setKrookieNumber('');
-      setAdvertisementType([]);
-      selectedValues({});
-      setBuildingData([
-        { buildingNumber: '', totalSize: '', numberOfFloors: '' },
-      ]);
+     
       // Toggle the state to show the main dialog
       setConfirmationDialog(false);
       setShowModal(true);
@@ -684,12 +706,16 @@ const ChBuildingInfo = () => {
 
 
         <div style={{ marginBottom: '50px', textAlign: 'right' }}>
-        <div className='nextButtonCont'style={{ float: 'right', marginTop: '10px',marginRight: '18px' }}>
-          <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
-            {t('nextButton')}
-          </button>
-        </div>
-        </div>
+  <div className='nextButtonCont' style={{ float: 'right', marginTop: '10px', marginRight: '18px' }}>
+    <button className="buttonAdd w-40 p-2" style={{ marginRight: '15px' }} onClick={handleRestClick}>
+      Reset
+    </button>
+    <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
+      {t('nextButton')}
+    </button>
+  </div>
+</div>
+
         </div>
 
 
