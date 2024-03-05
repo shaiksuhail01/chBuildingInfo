@@ -29,7 +29,7 @@ const OtpInfo = () => {
         <div className="buildingInfoBg d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <div className="card bg-white mb-3 shadow rounded border-0 pb-2" style={{ maxWidth: '85%', height: '750px', marginTop: '50px', display: 'flex', padding: '40px' }}>
                 <h3 className="subHeadings" style={{ textAlign: 'center', fontSize: '1.8em', marginBottom: '0', marginTop: '5px' }}>Login with Mobile PKI</h3>
-                <div className="imageContainer" style={{ width: '25%', borderRight: '1px solid #ccc', padding: '20px', marginTop: '100px', marginLeft: '300px' }}>
+                <div className="imageContainer" style={{ width: '25%', borderRight: '1px solid #ccc', padding: '20px', marginTop: '100px', marginLeft: '320px' }}>
                     <img src="/images/mobile.jpg" alt="loginImage" className="imageLogin" style={{ width: '110%', height: 'auto' }} />
                 </div>
                 <div className="contentContainer" style={{ flex: '1', padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -58,7 +58,7 @@ const OtpInfo = () => {
                             />
                         </div>
                     </div>
-                    <div style={{ textAlign: 'center', marginTop: '2px' }}>
+                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
                         <h3 className='subHeadings' style={{ fontSize: '1.1em', color: '#00004d', marginBottom: '0' }}>Note: " Please make sure that you see the same verification code on your mobile device before entering PIN code. If you see a different verification code, do not enter your PIN code. " </h3>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '30px' }}>

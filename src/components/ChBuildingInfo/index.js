@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import DraggableDialog from '../DailogueBox';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from '@mui/material/TextField';
@@ -87,7 +86,7 @@ const ChBuildingInfo = () => {
   const isArabic = i18n.language === 'ar';
   const [buildingData, setBuildingData] = useState([
     { buildingNumber: '', totalSize: '', numberOfFloors: '' },
-  
+
 
 
   ]);
@@ -112,7 +111,7 @@ const ChBuildingInfo = () => {
         setKrookieNumber(data.krookie);
         setSystemId(data.systemId);
       } catch (error) {
-        setKrookieNumber(''); 
+        setKrookieNumber('');
         setSystemId('');
         console.log('Error fetching data:', error);
       }
@@ -252,18 +251,18 @@ const ChBuildingInfo = () => {
   };
 
   const handleRestClick = () => {
-      setPlotAddress('');
-      setPlotNumber('');
-      setConstructionStages([1]);
-      setKrookieNumber('');
-      setAdvertisementType([]);
-      setSelectedValues({});
-      setBuildingData([
-        { buildingNumber: '', totalSize: '', numberOfFloors: '' },
-      ]);
+    setPlotAddress('');
+    setPlotNumber('');
+    setConstructionStages([1]);
+    setKrookieNumber('');
+    setAdvertisementType([]);
+    setSelectedValues({});
+    setBuildingData([
+      { buildingNumber: '', totalSize: '', numberOfFloors: '' },
+    ]);
 
-    };
-  
+  };
+
 
   const handleNextButtonClick = () => {
     const requiredFields = [plotNumber, krookieNumber, plotAddress, advertisementType];
@@ -281,7 +280,7 @@ const ChBuildingInfo = () => {
 
 
     } else {
-      downloadJsonFile();
+      //downloadJsonFile();
       console.log('Data to be sent to the server:', {
         plotNumber,
         krookieNumber,
@@ -290,7 +289,7 @@ const ChBuildingInfo = () => {
         selectedValues,
         buildingData,
       });
-     
+
       // Toggle the state to show the main dialog
       setConfirmationDialog(false);
       setShowModal(true);
@@ -302,6 +301,11 @@ const ChBuildingInfo = () => {
 
     }
   };
+  const handleBackClick = () => {
+    window.location.href = '/Requests-Form';
+
+  };
+
 
 
   const handleDeleteStage = (stage) => {
@@ -322,35 +326,35 @@ const ChBuildingInfo = () => {
   };
 
 
-  const downloadJsonFile = () => {
-    // Create a JSON object
-    const jsonData = {
-      plotNumber,
-      krookieNumber,
-      plotAddress,
-      advertisementType,
-      selectedValues,
-      buildingData,
+  // const downloadJsonFile = () => {
+  //   // Create a JSON object
+  //   const jsonData = {
+  //     plotNumber,
+  //     krookieNumber,
+  //     plotAddress,
+  //     advertisementType,
+  //     selectedValues,
+  //     buildingData,
 
-    };
+  //   };
 
-    // Convert JSON object to a string with formatting
-    const jsonString = JSON.stringify(jsonData, null, 2);
+  //   // Convert JSON object to a string with formatting
+  //   const jsonString = JSON.stringify(jsonData, null, 2);
 
-    // Create Blob and download link
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
+  //   // Create Blob and download link
+  //   const blob = new Blob([jsonString], { type: 'application/json' });
+  //   const url = URL.createObjectURL(blob);
 
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'userData.json';
-    document.body.appendChild(link);
-    link.click();
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.download = 'userData.json';
+  //   document.body.appendChild(link);
+  //   link.click();
 
-    // Cleanup
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+  //   // Cleanup
+  //   document.body.removeChild(link);
+  //   URL.revokeObjectURL(url);
+  // };
   const handleResetError = (field) => {
     setErrors((prevErrors) => ({ ...prevErrors, [field]: false }));
   };
@@ -376,13 +380,13 @@ const ChBuildingInfo = () => {
   const formatSizeInput = (input) => {
     // Remove non-numeric characters and convert to number
     const numericValue = parseFloat(input.replace(/[^0-9.]/g, ''));
-  
+
     // Check if the input is a valid number
     if (!isNaN(numericValue)) {
       // Format the number with commas for thousands
       return numericValue.toLocaleString();
     }
-  
+
     // If input is not a valid number, return the original value
     return input;
   };
@@ -393,117 +397,117 @@ const ChBuildingInfo = () => {
       <Header />
       <div className={`buildinInfoContainer ${isArabic ? 'rtl' : ''}`} >
         <h1 className="headingInfo p-4">{t('buildingInfoHeader')}</h1>
-      
-          <div className="card bg-white mb-3 shadow rounded border-0">
-            <div className="p-3">
-              <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
-            </div>
-            <div className="card-body plotConstructionContainer d-flex pb-5">
 
-              {i18n.language === 'ar' ? (
-                <CacheProvider value={cacheRtl}>
-                  <TextField
-                    id="plotNum"
-                    label={errors.plotNumber ? <span className="error-text">قم تصريح البناء {t('Required')}*</span> : t('plotNumberLabel')}
-                    variant="outlined"
-                    className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
-                    value={plotNumber}
-                    onChange={handlePlotNumberChange}
-                    onBlur={() => handleBlur('plotNumber', plotNumber)}
-                    onClick={() => handleFieldClick('plotNumber')}
-                  />
+        <div className="card bg-white mb-3 shadow rounded border-0">
+          <div className="p-3">
+            <h1 className="subHeadings">{t('plotInfoHeader')}</h1>
+          </div>
+          <div className="card-body plotConstructionContainer d-flex pb-5">
 
-                  <TextField
-                    id="krookie"
-                    label={errors.krookieNumber ? <span className="error-text">رقم الكروكي {t('Required')}*</span> : t('krookieNumberLabel')}
-                    variant="outlined"
-                    className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
-                    value={krookieNumber}
-                    onChange={handleKrookieChange}
-                    onBlur={() => handleBlur('krookieNumber', krookieNumber)}
-                    onClick={() => handleFieldClick('krookieNumber')}
+            {i18n.language === 'ar' ? (
+              <CacheProvider value={cacheRtl}>
+                <TextField
+                  id="plotNum"
+                  label={errors.plotNumber ? <span className="error-text">قم تصريح البناء {t('Required')}*</span> : t('plotNumberLabel')}
+                  variant="outlined"
+                  className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
+                  value={plotNumber}
+                  onChange={handlePlotNumberChange}
+                  onBlur={() => handleBlur('plotNumber', plotNumber)}
+                  onClick={() => handleFieldClick('plotNumber')}
+                />
 
-
-                  />
+                <TextField
+                  id="krookie"
+                  label={errors.krookieNumber ? <span className="error-text">رقم الكروكي {t('Required')}*</span> : t('krookieNumberLabel')}
+                  variant="outlined"
+                  className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
+                  value={krookieNumber}
+                  onChange={handleKrookieChange}
+                  onBlur={() => handleBlur('krookieNumber', krookieNumber)}
+                  onClick={() => handleFieldClick('krookieNumber')}
 
 
+                />
 
-                  <TextField
-                    id="plotAdd"
-                    label={errors.plotAddress ? <span className="error-text">عنوان القطعة {t('Required')}*</span> : t('plotAddressLabel')}
-                    variant="outlined"
-                    className={`form-control inputEl  ${errors.plotAddress ? 'error' : ''}`}
-                    value={plotAddress}
-                    onChange={handlePlotAddressChange}
-                    onBlur={() => handleBlur('plotAddress', plotAddress)}
-                    onClick={() => handleFieldClick('plotAddress')}
-                    select
-                  >
-                    {fullAddresses.map((address) => (
-                      <MenuItem key={address.instanceId} value={address.fullAddress}>
-                        {address.fullAddress}
-                      </MenuItem>
-                    ))}
 
-                  </TextField>
 
-                </CacheProvider>
+                <TextField
+                  id="plotAdd"
+                  label={errors.plotAddress ? <span className="error-text">عنوان القطعة {t('Required')}*</span> : t('plotAddressLabel')}
+                  variant="outlined"
+                  className={`form-control inputEl  ${errors.plotAddress ? 'error' : ''}`}
+                  value={plotAddress}
+                  onChange={handlePlotAddressChange}
+                  onBlur={() => handleBlur('plotAddress', plotAddress)}
+                  onClick={() => handleFieldClick('plotAddress')}
+                  select
+                >
+                  {fullAddresses.map((address) => (
+                    <MenuItem key={address.instanceId} value={address.fullAddress}>
+                      {address.fullAddress}
+                    </MenuItem>
+                  ))}
 
-              ) : (
-                <>
-                  <TextField
-                    id="plotNum"
-                    label={errors.plotNumber ? <span className="error-text">*Building Permit Number {t('Required')}</span> : t('plotNumberLabel')}
-                    variant="outlined"
-                    className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
-                    value={plotNumber}
-                    onChange={handlePlotNumberChange}
-                    onBlur={() => handleBlur('plotNumber', plotNumber)}
-                    onClick={() => handleFieldClick('plotNumber')}
+                </TextField>
 
-                  />
+              </CacheProvider>
 
-                  <TextField
-                    id="krookie"
-                    label={errors.krookieNumber ? <span className="error-text">*KROOKIE Number {t('Required')}</span> : t('krookieNumberLabel')}
-                    variant="outlined"
-                    className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
-                    value={krookieNumber}
-                    onChange={handleKrookieChange}
-                    onBlur={() => handleBlur('krookieNumber', krookieNumber)}
-                    onClick={() => handleFieldClick('krookieNumber')}
+            ) : (
+              <>
+                <TextField
+                  id="plotNum"
+                  label={errors.plotNumber ? <span className="error-text">*Building Permit Number {t('Required')}</span> : t('plotNumberLabel')}
+                  variant="outlined"
+                  className={`form-control inputEl  ${errors.plotNumber ? 'error' : ''}`}
+                  value={plotNumber}
+                  onChange={handlePlotNumberChange}
+                  onBlur={() => handleBlur('plotNumber', plotNumber)}
+                  onClick={() => handleFieldClick('plotNumber')}
 
-                  />
+                />
 
-                  <TextField
-                    id="plotAdd"
-                    label={
-                      errors.plotAddress ? (
-                        <span className="error-text">*Plot Address Required</span>
-                      ) : (
-                        'Plot Address'
-                      )
-                    }
-                    variant="outlined"
-                    className={`form-control inputEl ${errors.plotAddress ? 'error' : ''}`}
-                    value={plotAddress}
-                    onChange={handlePlotAddressChange}
-                    onBlur={() => handleBlur('plotAddress', plotAddress)}
-                    onClick={() => handleFieldClick('plotAddress')}
-                    select
-                  >
-                    {fullAddresses.map((address) => (
-                      <MenuItem key={address.instanceId} value={address.fullAddress}>
-                        {address.fullAddress}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </>
-              )}
-            </div>
-          
+                <TextField
+                  id="krookie"
+                  label={errors.krookieNumber ? <span className="error-text">*KROOKIE Number {t('Required')}</span> : t('krookieNumberLabel')}
+                  variant="outlined"
+                  className={`form-control inputEl inputEl2 ${errors.krookieNumber ? 'error' : ''}`}
+                  value={krookieNumber}
+                  onChange={handleKrookieChange}
+                  onBlur={() => handleBlur('krookieNumber', krookieNumber)}
+                  onClick={() => handleFieldClick('krookieNumber')}
+
+                />
+
+                <TextField
+                  id="plotAdd"
+                  label={
+                    errors.plotAddress ? (
+                      <span className="error-text">*Plot Address Required</span>
+                    ) : (
+                      'Plot Address'
+                    )
+                  }
+                  variant="outlined"
+                  className={`form-control inputEl ${errors.plotAddress ? 'error' : ''}`}
+                  value={plotAddress}
+                  onChange={handlePlotAddressChange}
+                  onBlur={() => handleBlur('plotAddress', plotAddress)}
+                  onClick={() => handleFieldClick('plotAddress')}
+                  select
+                >
+                  {fullAddresses.map((address) => (
+                    <MenuItem key={address.instanceId} value={address.fullAddress}>
+                      {address.fullAddress}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </>
+            )}
+          </div>
+
         </div>
-        <div className='plotConstructionContainer'>
+        <div className={'plotConstructionContainer ' + (isArabic ? 'rtl' : '')}>
           <div className="card bg-white m-3 shadow rounded border-0 ">
             <div className="p-3">
               <h1 className="subHeadings mt-3">{t('constructionDetailsHeader')}</h1>
@@ -637,7 +641,7 @@ const ChBuildingInfo = () => {
               <div className="card-body">
                 <div className="table-responsive" style={{ maxHeight: '350px', overflowY: 'auto' }}>
                   <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                    <TableContainer sx={{ maxHeight: '100%' }} >
+                    <TableContainer sx={{ maxHeight: '100%' }}>
                       <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                           <TableRow>
@@ -650,18 +654,18 @@ const ChBuildingInfo = () => {
                         <TableBody>
                           {buildingData.map((building, index) => (
                             <TableRow key={index}>
-                            <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
-                            <span>{index + 1}</span>
-                                </TableCell>
-                             
-                             <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}> 
+                              <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
+                                <span>{index + 1}</span>
+                              </TableCell>
+
+                              <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
                                 <Input
                                   type="text"
                                   className="no-outline-input"
                                   value={building.totalSize}
                                   onChange={(e) => handleInputChange(index, 'totalSize', formatSizeInput(e.target.value))}
-                                  />
-                                  </TableCell>  
+                                />
+                              </TableCell>
                               <TableCell style={{ border: `1px solid ${theme.palette.grey[400]}` }}>
                                 <Input
                                   type="text"
@@ -692,34 +696,33 @@ const ChBuildingInfo = () => {
 
         </div>
 
-       <div className='nextButtonContainer'>
-        <div style={{ marginBottom: '50px', textAlign: 'left' }}>
-        <div className='nextButtonCont'style={{ float: 'right', marginTop: '10px', marginLeft:'20px'}}>
-        <Link to="/">
-        <button className="buttonAdd w-40 p-2">
-          Back
-        </button>
-      </Link>
+        <div className='nextButtonContainer'>
+          <div style={{ marginBottom: '50px', textAlign: 'left' }}>
+            <div className='nextButtonCont' style={{ float: 'right', marginTop: '10px', marginLeft: '20px' }}>
+
+              <button className="buttonAdd w-40 p-2" onClick={handleBackClick}>
+                {t('backButton')}
+              </button>
+
+            </div>
+          </div>
+
+
+
+          <div style={{ marginBottom: '50px', textAlign: 'right' }}>
+            <div className='nextButtonCont' style={{ float: 'right', marginTop: '10px', marginRight: '18px' }}>
+              <button className="buttonAdd w-40 p-2" style={{ marginRight: '15px' }} onClick={handleRestClick}>
+                {t('resetButton')}
+              </button>
+              <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
+                {t('nextButton')}
+              </button>
+            </div>
+          </div>
+
+
+
         </div>
-        </div>
-
-
-
-        <div style={{ marginBottom: '50px', textAlign: 'right' }}>
-  <div className='nextButtonCont' style={{ float: 'right', marginTop: '10px', marginRight: '18px' }}>
-    <button className="buttonAdd w-40 p-2" style={{ marginRight: '15px' }} onClick={handleRestClick}>
-      Reset
-    </button>
-    <button className="buttonAdd w-40 p-2" onClick={handleNextButtonClick}>
-      {t('nextButton')}
-    </button>
-  </div>
-</div>
-
-        </div>
-
-
-
         <DraggableDialog
           open={showModal}
           onClose={() => setShowModal(false)}
